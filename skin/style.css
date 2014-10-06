@@ -1,0 +1,628 @@
+/*-------------------------------------------------
+  Optimointi Skin Stylesheet
+  Design by Nicolas Fogelholm
+  http://www.fogelholm.com/
+-------------------------------------------------*/
+
+body
+{
+    background: #FAFAFA url("img/bg.gif") center repeat-y;
+	font: small Verdana,Sans-serif;
+	line-height: 1.6em;
+	color: Black;
+	padding: 0;
+	margin: 0 0 0 0;
+}
+a {
+        color: #006699;
+        text-decoration: none;
+}
+a:hover {
+	color: #FF6600;
+	text-decoration: underline;
+}
+a:active
+{
+	color: #FF3300;
+
+}
+ul
+{
+	list-style: square;
+	padding: 0;
+	margin: 0 0 0 15px;
+}
+ul li
+{
+	margin: 4px 0 4px 0;
+/*	color: #FF6600; */
+
+	/* 独自設定 */
+	color: #66CCFF;
+	
+}
+code
+{
+	color: #CC3300;
+	font-size:13px;
+	font-family: monospace,"細明朝体",serif;
+	line-height:100%;
+	letter-spacing: 0px;
+	font-strech:narrower;
+}
+pre
+{
+	width: 494px;
+	overflow: hidden;
+	border: 1px solid #EAE7D6;
+	padding: 3px;
+	height:auto;
+}
+acronym, abbr
+{
+	cursor: help;
+	border-bottom: 1px dotted #333;
+}
+del
+{
+	background: #FFFFCC;
+	color: #ccc;
+}
+blockquote
+{
+	background: url("img/bg-quote.gif") top left no-repeat;
+	padding: 8px 0 0 25px;
+	margin: 10px;
+}
+
+form {
+	margin:0;
+}
+
+.doNotDisplay, .none, caption
+{
+	display: none;
+}
+.underline
+{
+	text-decoration: underline;
+}
+.clear
+{
+	clear: both;
+	height: 0.1px;
+	padding: 0;
+	margin: 0;
+}
+#page-wrapper
+{
+	text-align: left;
+	width: 750px;
+	padding: 0;
+	margin: auto;
+
+}
+#content-wrapper
+{
+	width: 750px;
+	margin: 0px 0px 0px 0px;
+	padding: 0;
+}
+#top
+{
+   background: url(img/top.gif) repeat-x;
+	width: 100%;
+/*	height: 66px; */
+	height: 50px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	border-bottom:1px solid #BBBBBB;
+}
+.toptable
+{
+   margin-left: auto; 
+	margin-right: auto;
+/*   width: 770px; */
+/*	width:720px; */
+	width:760px;
+/*	height: 66px; */
+	height: 50px;
+}
+#header h1
+{
+	font: 20px Arial, Verdana, sans-serif;
+	border-bottom: 1px dotted #A9A9A9;
+	padding: 10px;
+	margin: 0;
+}
+#header a:link, #header a:visited
+{
+	color: #006699;
+	border: none;
+}
+#header a:hover, #header a:active
+{
+	color: #CC0000;
+}
+#top_container
+{
+	height: 32px;
+	background: #024BAA;
+	padding: 0;
+	margin: 0;
+   background: url(img/nav.gif);
+}
+#top_container ul
+{
+	padding: 0;
+	margin: 0;
+}
+#top_container ul li
+{
+	list-style-type: none;
+	display: block;
+	float: left;
+	font: 11px/30px "Lucida Grande", verdana, sans-serif;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+#top_container a
+{
+	display: block; 
+	color: #000000;
+	padding: 0 13px 0 13px;
+	margin: 0;
+	text-decoration: none;
+	border-top: none;
+	border-right: 1px solid #A8B090;
+	border-bottom: none;
+}
+#top_container li#active
+{
+	color: #FF6600;
+	font-weight: bold;
+	border-bottom: none;
+}
+#top_container a:hover
+{
+	color: #FF6600;
+	border-bottom: none;
+}
+#main
+{
+	width: 530px;
+	float: left;
+	margin: 0;
+	padding: 0 0 30px 0;
+	background: #fff;
+}
+.content-header
+{
+	padding: 0;
+	margin: 15px;
+}
+.content-header h2
+{
+	color: #006699;
+	font: bold 14px Arial, Verdana, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+.content-title
+{
+	padding: 0;
+	margin: 0;
+}
+.content-title h1
+{
+	color: #006699;
+	border-bottom: 1px dotted #A9A9A9;
+	font-weight: bold;
+	font: 14px Arial, Verdana, sans-serif;
+	padding: 0px 0 2px 4px;
+	margin: 0 0 8px 0;
+
+	/* 独自設定 */
+	border-bottom: 2px solid #A9A9A9;
+	border-left: 8px solid #CBCBCB;
+	color: #666666;
+
+}
+.content-title h3
+{
+	color: #006699;
+	border-bottom: 1px dotted #A9A9A9;
+	font-weight: bold;
+	font: 14px Arial, Verdana, sans-serif;
+	padding: 0px 0 2px 4px;
+	margin: 0 0 8px 0;
+
+	/* 独自設定 */
+	border-bottom: 2px solid #A9A9A9;
+	border-left: 8px solid #CBCBCB;
+	color: #666666;
+
+}
+.content
+{
+	padding: 0;
+	margin: 20px 15px 40px 15px;
+}
+
+/* 独自追加 */
+#main .border_orig {
+	border:1px solid #cccccc;
+	border-top:5px solid #cccccc;
+	padding: 10px;
+}
+
+/* 独自追加 */
+.content a {
+	text-decoration:underline;
+}
+
+.readmore
+{
+	text-align: right;
+}
+.entry-info
+{
+	font-size: 10px;
+	text-align: right;
+	line-height: 16px;
+	padding: 0;
+	margin: 8px 0 10px 0;
+
+/*	border-bottom:1px solid #aaaaaa; */
+	border-top:1px dashed #aaaaaa;
+	padding:2px 0px;
+}
+.entry-info p
+{
+	padding: 0;
+	margin: 0;
+}
+.entry .imgupload
+{
+	float: left;
+	border: none;
+	border: 1px solid #333;
+	margin: 20px 10px 0 0;
+}
+.navi-pages
+{
+	background: #FFFFFF;
+	font-size: 11px;
+	text-align: right;
+	padding: 10px;
+	margin: 15px;
+}
+.navi-pages p
+{
+	padding: 0;
+	margin: 0;
+}
+.message-box
+{
+	background: #F8F8FF;
+	font-size: 12px;
+	padding: 10px;
+	margin: 15px;
+}
+table#postcomment tr td
+{
+	font: 11px Verdana, Arial, sans-serif;
+}
+table#postcomment tr td p
+{
+	margin: 4px 0 4px 0;
+}
+#comments, #comments-post, #trackbacks
+{
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0;
+	margin: 20px 15px 10px 15px;
+}
+#comments h4, #comments-post h4, #trackbacks h4
+{
+	color: #383828;
+	font: bold 14px Verdana, 'Times New Roman', sans-serif;
+	padding: 0;
+	margin: 0 0 20px 0;
+	border-bottom: 1px dotted #A9A9A9;
+}
+.comment-item, .trackbacks-item
+{
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #f3f3f3;
+	margin: 5px 0 20px 0;
+}
+.comment-text p, .comment-info p, .trackbacks-text p, .trackbacks-info p
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+.comment-info, .trackbacks-info
+{
+	font-size: 10px;
+	text-align: right;
+}
+#copyright
+{
+	color: Gray;
+	width: 200px;
+	float: right;
+	font-size: 11px;
+	line-height: 16px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+#sidebar
+{
+	color: Gray;
+	width: 200px;
+	float: right;
+	font-size: 11px;
+	line-height: 16px;
+	padding: 0;
+	margin: 10px;
+	overflow: hidden;
+}
+.sidebar-wrapper
+{
+	margin: 10px;
+}
+#sidebar .box-1
+{
+	margin: 0 0 30px 0;
+}
+#sidebar h4
+{
+	color: #383828;
+	border-bottom: 1px dotted #A9A9A9;
+	padding: 3px 0 2px 0px;
+	font: bold 12px Verdana, Arial, sans-serif;
+	margin: 0 0 8px 0;
+}
+#footer
+{
+	background: #F8F8FF;
+	background: url(img/bottom.gif) repeat-x;
+	width: 100%;
+	text-align: center;
+	clear: both;
+	padding: 0;
+	margin: 0;
+}
+.footer-i
+{
+	padding: 10px;
+	margin: 0px;
+}
+.footer-i p
+{
+	padding: 0;
+	margin: 0;
+}
+textarea.text, input.formfield
+{
+	font: 11px Verdana, Arial, sans-serif;
+}
+input.formfield
+{
+	width: 150px;
+	margin-right: 10px;
+}
+input.formbutton
+{
+	background: #708090;
+	border-top:1px #999 solid;
+	border-left:1px #999 solid;
+	border-bottom:1px #eee solid;
+	border-right:1px #eee solid;
+	color: #fff;
+	font: 11px Verdana, Arial, sans-serif;
+}
+.trackbacks-text h5
+{
+	font: bold 11px Verdana, Arial, sans-serif;
+	color: #993300;
+	padding: 0;
+	margin: 0;
+}
+
+/* コメントフォーム崩れ対策に追加 */
+div.loginform .formfield, div.commentform .formfield, div.mailform .formfield {
+	display: block;
+} 
+
+/* NP_ShowBlogs用 */
+.pageswitch {
+	text-align:center;
+	width:400px;
+	margin:0 auto;
+}
+
+/* NP_LINKLIST用 */
+.sidebardl {
+	padding: 0;
+	margin: 20px 15px 40px 15px;
+}
+
+.sitebardl dd {
+	padding: 0px 0 2px 4px;
+	margin: 0 0 8px 0;
+}
+
+/* NP_LatestWriteBacks */
+.nobullets {
+	
+}
+
+/* ASCII ART */
+.aa {
+	font-family : 'ＭＳ Ｐゴシック',sans-serif ;
+	line-height:100%;
+}
+
+/* プログラムソース用 */
+pre {
+	line-height:50%;
+	width:480px;
+	height:auto;
+	padding:5px;
+	background-color:#000000;
+}
+
+code {
+	display:block;
+	background-color:#000000;
+	line-height:100%;
+	width:470px;
+	height:auto;
+	margin:0;
+	padding:5px;
+	color:#eeeeee;
+}
+
+/* 独自設定のリスト */
+ul.original
+{
+	list-style: square;
+	padding: 0;
+	margin: 10px 0 0 15px;
+}
+ul.original li
+{
+	height:20px;
+	margin: 0 0 0 10px;
+	padding: 0;
+	color: #6666ff;
+	font-weight:bold;
+}
+
+/* ブログ村 */
+#blog-mura {
+	text-align:left;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/* i2i access ranking */
+#i2i_access_ranking {
+	margin-bottom:10px;
+}
+
+/* 引用用クラス */
+.inyou {
+	width:90%;
+	margin:0 auto;
+	border:1px solid #cccccc;
+	padding:3px;
+}
+
+/* 色強調 */
+.red {
+	color:#ff5555;
+	font-weight:bold;
+}
+
+.blue {
+	color:#5555ff;
+	font-weight:bold;
+}
+
+.richblue {
+	color:#6495ed;
+}
+
+.gray {
+	color:#777777;
+}
+
+.crimson {
+	color:#dc143c;
+}
+
+.green {
+	color:#008000;
+}
+
+/* サイズ強調 */
+.big {
+	font-size:140%;
+}
+
+.more_big {
+	font-size:200%;
+	line-height:150%;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+/* 幅 */
+.bottom_line_red {
+	width:100%;
+	color:#ff5555;
+	font-weight:bold;
+	border-bottom:1px solid #ff5555;
+}
+
+/* NP_Related.phpのデザイン */
+h3.related_h3 {
+	color: #383828;
+	border-bottom: 1px dotted #A9A9A9;
+	padding: 3px 0 2px 0px;
+	font: bold 12px Verdana, Arial, sans-serif;
+	margin-bottom:0;
+}
+
+ul.related {
+	margin:0;
+	list-style-type: none;
+	padding:3px;
+}
+
+ul.related li {
+	padding:0;
+	margin:5px 0;
+	line-height:120%;
+}
+
+/* NP_Mostviewed */
+ul.popular {
+	list-style: decimal;
+	padding-left:3px;
+}
+
+ul.popular li {
+	color: #383828;
+}
+
+.navi-pages ul.popular {
+	margin:0;
+	list-style-type: none;
+	padding:3px;
+}
+
+.navi-pages ul.popular li {
+	padding:0;
+	margin:5px 0;
+	line-height:120%;
+}
+
+/* monthly */
+ul.monthly li {  }
+
+/* オリジナル の hr */
+hr {
+	border-top:1px dashed #A9A9A9;
+	padding:0;
+	margin:0;
+}

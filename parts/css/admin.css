@@ -1,0 +1,53 @@
+/*  
+ * admin.css
+ * 管理画面のcss設定
+ */ 
+
+@charset "EUC-JP";
+
+table.admin_thread_tbl {
+    width:600px;
+    text-align:left;
+    margin:0 auto 10px auto;
+    border-collapse:collapse;
+    border:1px solid #555555;
+    background-color:#fafafa;
+}
+
+table.admin_thread_tbl td {
+    padding:2px;
+    border:1px solid #555555;
+}
+
+
+.admin_bg_dark {
+	background-color:#eaeaea;
+}
+
+.admin_no {
+	width:24px;
+	text-align:center;
+}
+
+.admin_name {
+	width:60px;
+}
+
+.admin_date {
+    text-align:center;
+    width:150px;
+}
+
+.admin_delete_check {
+    width:30px;text-align:center;
+}
+
+.admin_menu_bg {
+	background-color:#a0a0a0;
+	color:#000000;
+}
+
+.admin_submit {
+	margin:5px 10px 20px 10px;
+	padding:2px 5px;
+}

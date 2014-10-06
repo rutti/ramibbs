@@ -1,0 +1,1 @@
+<div class="thread_link"><a href="<!###THREAD_INNER_LINK###!>">(このスレッドの全てを表示)</a></div>

@@ -1,0 +1,1 @@
+<div id="admin_jump"><form action="" method="post" enctype="application/x-www-form-urlencoded"><input type="text" id="admin_pass" name="pass" value="" /><input type="submit" id="admin_cmd" name="cmd" value="管理画面へ" /><input type="hidden" name="mode" value="login" /></form></div><br clear="both" />

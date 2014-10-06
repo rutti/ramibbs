@@ -1,0 +1,81 @@
+@import url("admin.css");
+/*  
+ * base.css
+ * CSS½é´ü²½
+ */ 
+
+@charset "EUC-JP";
+
+html {
+    overflow-y: scroll;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var  {
+    font-style: normal;
+}
+table   {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+caption, th {
+    text-align: left;
+}
+q:before ,q:after   {
+    content: '';
+}
+object, embed   {
+    vertical-align: top;
+}
+hr, legend  {
+    display: none;
+}
+h1, h2, h3, h4, h5, h6  {
+    font-size: 100%;
+}
+img, abbr, acronym, fieldset    {
+    border: 0;
+}
+li  {
+    list-style-type: none;
+}
+
+body {
+	font: 12px/1.25 "¥á¥¤¥ê¥ª","Meiryo","¥Ò¥é¥®¥Î³Ñ¥´ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"£Í£Ó £Ð¥´¥·¥Ã¥¯",verdana,"MS PGothic",Sans-Serif;
+    background: #FFF;
+    color: #333;
+    font-size: 75%;
+    line-height: 150%;
+    text-align: center;
+}
+
+* + html body {
+    font-size: 12px;
+}
+
+a:link  {
+    text-decoration: none;
+    color: #00F;
+}
+
+a:visited   {
+    text-decoration: none;
+    color: #00F;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #00F;
+}
+
+a:active    {
+    text-decoration: none;
+    color: #00F;
+}
+
+#copyright {
+	margin-bottom:20px;
+}
