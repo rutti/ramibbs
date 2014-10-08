@@ -1,13 +1,13 @@
 <?php
 //////////////////////////////////////////////////////////////////
-// íËã`
+// ÂÆöÁæ©
 //////////////////////////////////////////////////////////////////
-// íPåÍê›íË
-define("THIS_VER",         "0.5");
+// ÂçòË™ûË®≠ÂÆö
+define("THIS_VER",         "1.1");
 define("MARK",             "<!###!>");
 define("INIT_SERVER",      "server.php");
 define("INIT_BBS_SETTING", "setting.php");
-define("CHARA_CODE",       "euc-jp");
+define("CHARA_CODE",       "UTF-8");
 define("DIR_PARTS",        "parts");
 define("DIR_SKIN",         "skin");
 define("DIR_LOG",          "log");
@@ -31,7 +31,7 @@ define("INC_LINK",         "link.inc");
 define("INC_LOGIN",        "login.inc");
 define("INC_ADMIN",        "admin.inc");
 
-// ílê›íË
+// ÂÄ§Ë®≠ÂÆö
 define("NUM_PREFIX",       5);
 define("FLAG_VISIBLE",     1);
 define("FLAG_INVISIBLE",   0);

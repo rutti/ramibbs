@@ -1,31 +1,48 @@
 <?php
 //////////////////////////////////////////////////////////////////
-// ¥·¥¹¥Æ¥à¥á¥Ã¥»¡¼¥¸ÄêµÁ
+// ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©
 //////////////////////////////////////////////////////////////////
-define("MESSAGE_UNKNONW_MODE",          "\$mode¤ÎÃÍ¤¬ÉÔÌÀ¤Ç¤¹");
-define("MESSAGE_WRONG_MODE",            "ÉÔÌÀ¤Êmode¤Ç¤¹¡£");
-define("MESSAGE_ZERO_WRITE",            "¤Þ¤À½ñ¤­¹þ¤ß¤¬¤¢¤ê¤Þ¤»¤ó");
-define("MESSAGE_COOKIE_ERROR",          "¥¯¥Ã¥­¡¼¤òÍ­¸ú¤Ë¤·¤Ê¤¤¤È½ñ¤­¹þ¤á¤Þ¤»¤ó¡£");
-define("MESSAGE_EMPTY_THREAD_TITLE",    "¥¹¥ì¥Ã¥É¥¿¥¤¥È¥ë¤¬¶õÇò¤Ç¤¹¡£");
-define("MESSAGE_EMPTY_THREAD_BODY",     "¥¹¥ì¥Ã¥ÉËÜÊ¸¤¬¶õÇò¤Ç¤¹¡£");
-define("MESSAGE_EMPTY_RES_BODY",        "½ñ¤­¹þ¤ßËÜÊ¸¤¬¶õÇò¤Ç¤¹¡£");
-define("MESSAGE_FAILURE_LOG_GET",       "³ºÅö¥í¥°¥Ç¡¼¥¿¼èÆÀ¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£");
-define("MESSAGE_EMPTY_THREAD_NUMBER",   "¥¹¥ì¥Ã¥ÉÈÖ¹æ¤¬¤¢¤ê¤Þ¤»¤ó¡£");
-define("MESSAGE_WRONG_THREAD_NUMBER",   "¥¹¥ì¥Ã¥ÉÈÖ¹æ¤¬ÉÔÀµ¤Ç¤¹¡£");
-define("MESSAGE_EMPTY_ADMIN_PASS",      "´ÉÍý¥Ñ¥¹¥ï¡¼¥É¤¬¶õÇò¤Ç¤¹¡£");
-define("MESSAGE_WRONG_ADMIN_PASS",      "´ÉÍý¥Ñ¥¹¥ï¡¼¥É¤¬´Ö°ã¤Ã¤Æ¤¤¤Þ¤¹¡£");
+define("MESSAGE_UNKNONW_MODE",          "\$modeã®å€¤ãŒä¸æ˜Žã§ã™");
+define("MESSAGE_WRONG_MODE",            "ä¸æ˜Žãª\$modeã§ã™ã€‚");
+define("MESSAGE_ZERO_WRITE",            "ã¾ã æ›¸ãè¾¼ã¿ãŒã‚ã‚Šã¾ã›ã‚“");
+define("MESSAGE_COOKIE_ERROR",          "ã‚¯ãƒƒã‚­ãƒ¼ã‚’æœ‰åŠ¹ã«ã—ãªã„ã¨æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã€‚");
+define("MESSAGE_EMPTY_THREAD_TITLE",    "ã‚¹ãƒ¬ãƒƒãƒ‰ã‚¿ã‚¤ãƒˆãƒ«ãŒç©ºç™½ã§ã™ã€‚");
+define("MESSAGE_EMPTY_THREAD_BODY",     "ã‚¹ãƒ¬ãƒƒãƒ‰æœ¬æ–‡ãŒç©ºç™½ã§ã™ã€‚");
+define("MESSAGE_EMPTY_RES_BODY",        "æ›¸ãè¾¼ã¿æœ¬æ–‡ãŒç©ºç™½ã§ã™ã€‚");
+define("MESSAGE_FAILURE_LOG_GET",       "è©²å½“ãƒ­ã‚°ãƒ‡ãƒ¼ã‚¿å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
+define("MESSAGE_EMPTY_THREAD_NUMBER",   "ã‚¹ãƒ¬ãƒƒãƒ‰ç•ªå·ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
+define("MESSAGE_WRONG_THREAD_NUMBER",   "ã‚¹ãƒ¬ãƒƒãƒ‰ç•ªå·ãŒä¸æ­£ã§ã™ã€‚");
+define("MESSAGE_EMPTY_ADMIN_PASS",      "ç®¡ç†ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒç©ºç™½ã§ã™ã€‚");
+define("MESSAGE_WRONG_ADMIN_PASS",      "ç®¡ç†ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé–“é•ã£ã¦ã„ã¾ã™ã€‚");
+define("MESSAGE_WRONG_VALUE",           "ä¸æ­£ãªå€¤ã§ã™ã€‚");
+define("MESSAGE_ADMIN_NO_CHECK",         "å‰Šé™¤ã«ãƒã‚§ãƒƒã‚¯ãŒï¼‘ã¤ã‚‚ã¤ã„ã¦ã„ã¾ã›ã‚“ã€‚");
+define("MESSAGE_ADMIN_RELOAD_DONE",      "æ›´æ–°ã—ã¾ã—ãŸã€‚");
+define("MESSAGE_ADMIN_LOGINED",          "ç®¡ç†ç”»é¢ã§ã™ã€‚");
+define("MESSAGE_NOT_MAKE",               "ã‚’ä½œæˆã§ãã¾ã›ã‚“ã€‚");
+define("MESSAGE_CHANGE_PERMISSION_0777", "ã®æ›¸ãè¾¼ã¿æ¨©é™ã‚’'0777'ã«å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚");
 
-// Ã±¸ìÄêµÁ
-define("WORD_LOGOUT",                   "¥í¥°¥¢¥¦¥È");
+
+// å˜èªžå®šç¾©
+define("WORD_LOGOUT",                   "ãƒ­ã‚°ã‚¢ã‚¦ãƒˆ");
 define("WORD_DEFAULT_TITLE",            "Rami-BBS");
-define("WORD_DEFAULT_DESC",             "¥ª¡¼¥×¥ó¥½¡¼¥¹¤Î´Ê°×·Ç¼¨ÈÄ¥·¥¹¥Æ¥àRami-BBS¤Ç¤¹¡£");
-define("WORD_DEFAULT_KEYWORD",          "BBS,Rami-BBS,·Ç¼¨ÈÄ,¥ª¡¼¥×¥ó¥½¡¼¥¹");
-define("WORD_DEFAULT_BASE_URL",         "http://rami.rutti.net/");
+define("WORD_DEFAULT_DESC",             "ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ã®ç°¡æ˜“æŽ²ç¤ºæ¿ã‚·ã‚¹ãƒ†ãƒ Rami-BBSã§ã™ã€‚");
+define("WORD_DEFAULT_KEYWORD",          "BBS,Rami-BBS,æŽ²ç¤ºæ¿,ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹");
+define("WORD_DEFAULT_BASE_URL",         "./");
 define("WORD_DEFAULT_AUTHOR",           "rutti.net");
 define("WORD_DEFAULT_SKIN",             "default");
 define("WORD_DEFAULT_NO_NAME",          "NO NAME");
 define("WORD_DEFAULT_SHORT_RS",         5);
 define("WORD_DEFAULT_THREAD_NUM_PP",    5);
 define("WORD_DEFAULT_ADMIN_PASS",       "ramibbs");
+
+define("WORD_ADMIN_TABLE_NO",           "No");
+define("WORD_ADMIN_TABLE_COMMENT",      "ã‚³ãƒ¡ãƒ³ãƒˆ");
+define("WORD_ADMIN_TABLE_NAME",         "åå‰");
+define("WORD_ADMIN_TABLE_IP",           "IP");
+define("WORD_ADMIN_TABLE_DATE",         "æ›¸ãè¾¼ã¿æ—¥æ™‚");
+define("WORD_ADMIN_TABLE_DELETE",       "å‰Šé™¤");
+define("WORD_ADMIN_SEND",               "é€ä¿¡ã™ã‚‹");
+define("WORD_ADMIN_RESET",              "ãƒªã‚»ãƒƒãƒˆ");
+define("WORD_ADMIN_TITLE",              "ç®¡ç†ç”»é¢");
 
 ?>

@@ -1,10 +1,10 @@
 @import url("admin.css");
 /*  
  * base.css
- * CSS½é´ü²½
+ * CSSåˆæœŸåŒ–
  */ 
 
-@charset "EUC-JP";
+@charset "UTF-8";
 
 html {
     overflow-y: scroll;
@@ -44,7 +44,7 @@ li  {
 }
 
 body {
-	font: 12px/1.25 "¥á¥¤¥ê¥ª","Meiryo","¥Ò¥é¥®¥Î³Ñ¥´ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"£Í£Ó £Ğ¥´¥·¥Ã¥¯",verdana,"MS PGothic",Sans-Serif;
+	font: 12px/1.25 "ãƒ¡ã‚¤ãƒªã‚ª","Meiryo","ãƒ’ãƒ©ã‚®ãƒè§’ã‚´ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯",verdana,"MS PGothic",Sans-Serif;
     background: #FFF;
     color: #333;
     font-size: 75%;

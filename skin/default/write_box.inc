@@ -1,26 +1,26 @@
-<input id="write_button" type="button" value="•π•Ï•√•…ΩÒ§≠π˛§ﬂ•‹•√•Ø•π°°…Ω°°º®" />
+<input id="write_button" type="button" value="„Çπ„É¨„ÉÉ„ÉâÊõ∏„ÅçËæº„Åø„Éú„ÉÉ„ÇØ„Çπ„ÄÄË°®„ÄÄÁ§∫" />
 <form action="" method="post" enctype="applicaton/x-www-form-urlencoded" id="write_box">
-	<table>
-		<tr>
-			<th>§™Ãæ¡∞°ß</th>
-			<td><input type="text" name="name" value="" /></td>
-		</tr>
-		<tr>
-			<th>•ø•§•»•Î(<span class="red">…¨ø‹</span>)°ß</th>
-			<td><input type="text" name="title" value="" /></td>
-		</tr>
-		<tr>
-			<th>À‹ ∏(<span class="red">…¨ø‹</span>)°ß</th>
-			<td><textarea name="body"></textarea></td>
-		</tr>
-		<tr><td colspan="2">&nbsp;</td></tr>
-		<tr>
-			<td id="submit_btn" colspan="2">
-				<input type="hidden" name="check" value="<!###CHECK_COOKIE###!>" />
-				<input type="hidden" name="mode"    value="new_thread_conf" />
-				<input type="submit" name="submit"  value="∆‚Õ∆≥Œ«ß" />
-			</td>
-		</tr>
-	</table>
+        <table>
+                <tr>
+                        <th>„ÅäÂêçÂâçÔºö</th>
+                        <td><input type="text" name="name" value="" /></td>
+                </tr>
+                <tr>
+                        <th>„Çø„Ç§„Éà„É´(<span class="red">ÂøÖÈ†à</span>)Ôºö</th>
+                        <td><input type="text" name="title" value="" /></td>
+                </tr>
+                <tr>
+                        <th>Êú¨Êñá(<span class="red">ÂøÖÈ†à</span>)Ôºö</th>
+                        <td><textarea name="body"></textarea></td>
+                </tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                        <td id="submit_btn" colspan="2">
+                                <input type="hidden" name="check" value="<!###CHECK_COOKIE###!>" />
+                                <input type="hidden" name="mode"    value="new_thread_conf" />
+                                <input type="submit" name="submit"  value="ÂÜÖÂÆπÁ¢∫Ë™ç" />
+                        </td>
+                </tr>
+        </table>
 </form>
 <br class="clear" />

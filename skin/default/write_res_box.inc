@@ -1,15 +1,15 @@
-	<div class="write_res_whole">
-		<div class="write_res_box">
-			<form action="" method="post" enctype="application/x-www-form-urlencoded" >
-				<div class="write_res_menu">Ãæ¡∞°ß</div>
-				<input type="text" name="res_name" class="in_name" />
-				<div class="write_res_menu">ΩÒ§≠π˛§ﬂÀ‹ ∏(<span class="red">…¨ø‹</span>)°ß</div>
-				<textarea name="res_body"></textarea>
-				<input type="hidden" name="check"        value="<!###CHECK_COOKIE###!>" />
-				<input type="hidden" name="thread_title" value="<!###BOARD_TITLE###!>" />
-				<input type="hidden" name="thread_no"    value="<!###BOARD_NO###!>" />
-				<input type="hidden" name="mode"         value="new_res_conf" />
-				<input type="submit" name="submit"       value="ΩÒ§≠π˛§ﬂ∆‚Õ∆≥Œ«ß" class="in_submit" />
-			</form>
-		</div>
-	</div>
+        <div class="write_res_whole">
+                <div class="write_res_box">
+                        <form action="" method="post" enctype="application/x-www-form-urlencoded" >
+                                <div class="write_res_menu">ÂêçÂâçÔºö</div>
+                                <input type="text" name="res_name" class="in_name" />
+                                <div class="write_res_menu">Êõ∏„ÅçËæº„ÅøÊú¨Êñá(<span class="red">ÂøÖÈ†à</span>)Ôºö</div>
+                                <textarea name="res_body"></textarea>
+                                <input type="hidden" name="check"        value="<!###CHECK_COOKIE###!>" />
+                                <input type="hidden" name="thread_title" value="<!###BOARD_TITLE###!>" />
+                                <input type="hidden" name="thread_no"    value="<!###BOARD_NO###!>" />
+                                <input type="hidden" name="mode"         value="new_res_conf" />
+                                <input type="submit" name="submit"       value="Êõ∏„ÅçËæº„ÅøÂÜÖÂÆπÁ¢∫Ë™ç" class="in_submit" />
+                        </form>
+                </div>
+        </div>

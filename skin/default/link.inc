@@ -1,1 +1,1 @@
-<div class="thread_link"><a href="<!###THREAD_INNER_LINK###!>">(╓Ё╓н╔╧╔Л╔ц╔и╓на╢╓ф╓Ри╫╪╗)</a></div>
+<div class="thread_link"><a href="<!###THREAD_INNER_LINK###!>">(Ц│⌠Ц│╝Ц┌╧Ц┐╛Ц┐┐Ц┐┴Ц│╝Е┘╗Ц│╕Ц┌▓Х║╗Г╓╨)</a></div>

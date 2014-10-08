@@ -1,9 +1,9 @@
 /*  
  * bbs.css
- * BBS�δ��ܤȤʤ���ʬ�򵭽�
+ * BBSの基本となる部分を記述
  */ 
 
-@charset "EUC-JP";
+@charset "UTF-8";
 
 body {
     background-color:#f5f5dc;

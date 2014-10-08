@@ -1,46 +1,44 @@
 <?php
 //////////////////////////////////////////////////////////////////
-// BBS ¥¯¥é¥¹
-// ·Ç¼¨ÈÄ¤È¤·¤Æ¤ÎÁ´ÂÎÅª¤Ê½èÍı¤ò°·¤¦
-// ËÜÍè¤ÏÃê¾İ¥¯¥é¥¹¤È¤·¤ÆÄêµÁ¤¹¤ë¤Ù¤­¤È¤Ï»×¤¦¤â¤Î¤Î¡¢
-// ¤½¤ì¤À¤ÈPHP4¤ÇÆ°ºî¤·¤Ê¤¤²ÄÇ½À­¤¬¤¢¤ë¤Î¤Ç¡¢
-// ¤¢¤¨¤ÆÃê¾İ²½¤·¤Æ¤¤¤Ê¤¤¡£
+// BBS ã‚¯ãƒ©ã‚¹
+// æ²ç¤ºæ¿ã¨ã—ã¦ã®å…¨ä½“çš„ãªå‡¦ç†ã‚’æ‰±ã†
 //////////////////////////////////////////////////////////////////
 class BBS {
 
     //************************************************************
-    // ¥á¥ó¥ĞÊÑ¿ô
-    protected $mode;    // BBSÆâ¤Î½èÍıÆâÍÆ
-    protected $html;    // (¸½»şÅÀ¤ÇÌ¤»ÈÍÑ)
-    protected $head;    // ¥Ø¥Ã¥À¤Î¥½¡¼¥¹
-    protected $foot;    // ¥Õ¥Ã¥¿¤Î¥½¡¼¥¹
-    protected $body;    // ¥á¥¤¥ó¥³¥ó¥Æ¥ó¥Ä¤Î¥½¡¼¥¹
-    protected $cookie;  // ½ñ¤­¹ş¤ß½èÍı¤ÇÍÑ¤¤¤ë¥¯¥Ã¥­¡¼¤ÎÃÍ
-    protected $error;   // ¥¨¥é¡¼»ş¤Ë¥³¥á¥ó¥È¤ò³ÊÇ¼¤¹¤ë
-    protected $page;    // É½¼¨¥Ú¡¼¥¸¿ô
-    protected $thread;  // É½¼¨¥¹¥ì¥Ã¥ÉÈÖ¹æ¤ò³ÊÇ¼
+    // ãƒ¡ãƒ³ãƒå¤‰æ•°
+    protected $mode;      // BBSå†…ã®å‡¦ç†å†…å®¹
+    protected $pagetitle; // ãƒšãƒ¼ã‚¸ã”ã¨ã®ã‚¿ã‚¤ãƒˆãƒ«
+    protected $head;      // ãƒ˜ãƒƒãƒ€ã®ã‚½ãƒ¼ã‚¹
+    protected $foot;      // ãƒ•ãƒƒã‚¿ã®ã‚½ãƒ¼ã‚¹
+    protected $body;      // ãƒ¡ã‚¤ãƒ³ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®ã‚½ãƒ¼ã‚¹
+    protected $cookie;    // æ›¸ãè¾¼ã¿å‡¦ç†ã§ç”¨ã„ã‚‹ã‚¯ãƒƒã‚­ãƒ¼ã®å€¤
+    protected $error;     // ã‚¨ãƒ©ãƒ¼æ™‚ã«ã‚³ãƒ¡ãƒ³ãƒˆã‚’æ ¼ç´ã™ã‚‹
+    protected $page;      // è¡¨ç¤ºãƒšãƒ¼ã‚¸æ•°
+    protected $thread;    // è¡¨ç¤ºã‚¹ãƒ¬ãƒƒãƒ‰ç•ªå·ã‚’æ ¼ç´
 
     //************************************************************
-    // °Ê²¼¡¢¥á¥½¥Ã¥É
+    // ä»¥ä¸‹ã€ãƒ¡ã‚½ãƒƒãƒ‰
 
     //////////////////////////////////////////////////////////////
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
+    // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     public function BBS() {
         $this->checkInitFile();
     }
 
     //////////////////////////////////////////////////////////////
-    // ½èÍı¤Î³«»Ï
-    // ¤³¤ì¤¬¤³¤ÎBBS¤Îmain´Ø¿ô¤ß¤¿¤¤¤Ê¤â¤Î¡£
+    // å‡¦ç†ã®é–‹å§‹
+    // ã“ã‚ŒãŒã“ã®BBSã®mainé–¢æ•°ã¿ãŸã„ãªã‚‚ã®ã€‚
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     public function start() {
+        $this->pagetitle = "";
         $this->mode = $this->getMode();
         $this->preProcess();
         $this->head = $this->setHeader();
@@ -52,37 +50,50 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ÀßÄê¥Õ¥¡¥¤¥ë¤Î³ÎÇ§¡£ÀßÄê¥Õ¥¡¥¤¥ë¤¬Ìµ¤±¤ì¤ĞºîÀ®¤¹¤ë¡£
+    // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ç¢ºèªã€‚è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒç„¡ã‘ã‚Œã°ä½œæˆã™ã‚‹ã€‚
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     protected function checkInitFile() {
         if ( !file_exists( INIT_SERVER ) )      { $this->makeServerInit(); }
         if ( !file_exists( INIT_BBS_SETTING ) ) { $this->makeBBSInit(); }
 
-        // ÄêµÁÆÉ¤ß¹ş¤ß
+        // å®šç¾©èª­ã¿è¾¼ã¿
         require_once(INIT_SERVER);
         require_once(INIT_BBS_SETTING);
     }
 
     //////////////////////////////////////////////////////////////
-    // server.php¤ÎºîÀ®¡£
-    // ¼ç¤ËÀßÃÖÂĞ¾İ¤Î¥µ¡¼¥Ğ¤Ë´Ø¤¹¤ë¾ğÊó¤ò³ÊÇ¼¤¹¤ë
+    // server.phpã®ä½œæˆã€‚
+    // ä¸»ã«è¨­ç½®å¯¾è±¡ã®ã‚µãƒ¼ãƒã«é–¢ã™ã‚‹æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹
+    // ã“ã‚Œå‹•ãã®ã¯è¨­ç½®æ™‚ã®ã¿
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     protected function makeServerInit() {
-        $rami_version = THIS_VER;           // ¤³¤Î·Ç¼¨ÈÄ¤Î¥Ğ¡¼¥¸¥ç¥ó(°ì±şserver.ini¤Ë¤â»Ä¤·¤Æ¤ª¤¯)
-        $php_version = phpversion();        // PHP¤Î¥Ğ¡¼¥¸¥ç¥ó¼èÆÀ
-        $serverpath = dirname(__FILE__);    // ¤³¤Î¥Õ¥©¥ë¥À¤¬¤¢¤ë¥µ¡¼¥Ğ¥Ñ¥¹¤ò¼èÆÀ
-        $host = $_SERVER["SERVER_NAME"];    // ¥Û¥¹¥ÈÌ¾¼èÆÀ
-        $prefix = "";                       // ¥×¥ì¥Õ¥£¥Ã¥¯¥¹¤ò¥é¥ó¥À¥àÀ¸À®
+
+		$base_path = reset( pathinfo( dirname(__FILE__) ) );
+
+		// ãƒ­ã‚°ä¿å­˜ç”¨ãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’èª¿ã¹ã‚‹
+		$perm_log = substr(sprintf('%o', fileperms(DIR_LOG)), -4);
+		if ( $perm_log != '0777' ) {
+            // ãƒ­ã‚°ãƒ•ã‚©ãƒ«ãƒ€ã«æ›¸ãè¾¼ã¿æ¨©é™ãŒç„¡ã‘ã‚Œã°çµ‚äº†
+            $path_target = $base_path."/".DIR_LOG;
+            $comment_error = "ã€Œ".$path_target."ã€".MESSAGE_CHANGE_PERMISSION_0777;
+            $this->errorEnd($comment_error);
+		}
+
+        $rami_version = THIS_VER;           // ã“ã®æ²ç¤ºæ¿ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³(ä¸€å¿œserver.iniã«ã‚‚æ®‹ã—ã¦ãŠã)
+        $php_version = phpversion();        // PHPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³å–å¾—
+        $serverpath = $base_path;           // ã“ã®ãƒ•ã‚©ãƒ«ãƒ€ãŒã‚ã‚‹ã‚µãƒ¼ãƒãƒ‘ã‚¹ã‚’å–å¾—
+        $host = $_SERVER["SERVER_NAME"];    // ãƒ›ã‚¹ãƒˆåå–å¾—
+        $prefix = "";                       // ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚’ãƒ©ãƒ³ãƒ€ãƒ ç”Ÿæˆ
         for( $i=0; $i<NUM_PREFIX; $i++ ) $prefix .= chr(rand(0,25)+65);
         $prefix .= "_";
 
-        // ÆâÍÆ¤ò¤Ş¤È¤á¤ë
+        // å†…å®¹ã‚’ã¾ã¨ã‚ã‚‹
         $server_init = '<'.'?php'."\n";
         $server_init.= 'define("RAMI_VER","'.$rami_version.'");'."\n";
         $server_init.= 'define("PHP_VER","'.$php_version.'");'."\n";
@@ -91,8 +102,14 @@ class BBS {
         $server_init.= 'define("PREFIX","'.$prefix.'");';
         $server_init.= "\n?".'>';
 
-        // ¥Õ¥¡¥¤¥ë¤Ë½ñ¤­¹ş¤à
-        $fp = fopen(INIT_SERVER,"w");
+        // ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚€
+        $fp = @fopen(INIT_SERVER,"w");
+        if (!$fp) {
+            // ãƒ•ã‚¡ã‚¤ãƒ«ç”Ÿæˆã«å¤±æ•—ã—ãŸã‚‰çµ‚äº†
+            $comment_error  = INIT_SERVER.MESSAGE_NOT_MAKE."<br />";
+            $comment_error .= "ã€Œ".$base_path."ã€".MESSAGE_CHANGE_PERMISSION_0777;
+            $this->errorEnd($comment_error);
+        }
         flock($fp, LOCK_EX);
         fwrite($fp, $server_init);
         flock($fp, LOCK_UN);
@@ -100,42 +117,49 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // setting.php¤ÎºîÀ®¡£
-    // ÀßÃÖ¤¹¤ëBBS¤Ë´Ø¤¹¤ë¾ğÊó¤ò³ÊÇ¼¤¹¤ë
-    // ´ğËÜÅª¤Ë¤Ï¥Õ¥¡¥¤¥ë¥¢¥Ã¥×»ş¤ËÂ¸ºß¤·¤Æ¤¤¤ë¥Ï¥º¤À¤¬¡¢
-    // ¤â¤·¤âÂ¸ºß¤·¤Ê¤«¤Ã¤¿¤é¥Ç¥Õ¥©¥ë¥È¤Î¥Õ¥¡¥¤¥ë¤òºîÀ®¤¹¤ë
+    // setting.phpã®ä½œæˆã€‚
+    // è¨­ç½®ã™ã‚‹BBSã«é–¢ã™ã‚‹æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹
+    // åŸºæœ¬çš„ã«ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—æ™‚ã«å­˜åœ¨ã—ã¦ã„ã‚‹ãƒã‚ºã ãŒã€
+    // ã‚‚ã—ã‚‚å­˜åœ¨ã—ãªã‹ã£ãŸã‚‰ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     protected function makeBBSInit() {
-        $bbs_title    = WORD_DEFAULT_TITLE;             // BBSÌ¾
-        $meta_desc    = WORD_DEFAULT_DESC;              // ¥á¥¿¥Ç¥£¥¹¥¯¥ê¥×¥·¥ç¥ó
-        $meta_keyword = WORD_DEFAULT_KEYWORD;           // ¥á¥¿¥­¡¼¥ï¡¼¥É
-        $base_url     = WORD_DEFAULT_BASE_URL;          // ¥Ù¡¼¥¹¤È¤Ê¤ëURL
-        $author       = WORD_DEFAULT_AUTHOR;            // ºî¼ÔÌ¾
-        $skin         = WORD_DEFAULT_SKIN;              // ¥Ç¥Õ¥©¥ë¥È¥¹¥­¥ó
-        $no_name      = WORD_DEFAULT_NO_NAME;           // Ì¾Ìµ¤·
-        $short_rs     = WORD_DEFAULT_SHORT_RS;          // Ã»½ÌÉ½¼¨»ş¤Î¥ì¥¹¿ô
-        $thread_num_pp= WORD_DEFAULT_THREAD_NUM_PP;     // 1¥Ú¡¼¥¸Ãæ¤Î¥¹¥ì¥Ã¥É¿ô
-        $admin_password = WORD_DEFAULT_ADMIN_PASS;      // ´ÉÍı²èÌÌ¤Î¥Ñ¥¹¥ï¡¼¥É
+        $bbs_title    = WORD_DEFAULT_TITLE;             // BBSå
+        $meta_desc    = WORD_DEFAULT_DESC;              // ãƒ¡ã‚¿ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚·ãƒ§ãƒ³
+        $meta_keyword = WORD_DEFAULT_KEYWORD;           // ãƒ¡ã‚¿ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+        $base_url     = WORD_DEFAULT_BASE_URL;          // ãƒ™ãƒ¼ã‚¹ã¨ãªã‚‹URL
+        $author       = WORD_DEFAULT_AUTHOR;            // ä½œè€…å
+        $skin         = WORD_DEFAULT_SKIN;              // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚­ãƒ³
+        $no_name      = WORD_DEFAULT_NO_NAME;           // åç„¡ã—
+        $short_rs     = WORD_DEFAULT_SHORT_RS;          // çŸ­ç¸®è¡¨ç¤ºæ™‚ã®ãƒ¬ã‚¹æ•°
+        $thread_num_pp= WORD_DEFAULT_THREAD_NUM_PP;     // 1ãƒšãƒ¼ã‚¸ä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+        $admin_password = WORD_DEFAULT_ADMIN_PASS;      // ç®¡ç†ç”»é¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 
-        // ¤Ş¤È¤á¤ë
+        // ã¾ã¨ã‚ã‚‹
         $bbs_init = '<'.'?php'."\n";
-        $bbs_init.= '// BBS¤Î¥¿¥¤¥È¥ëÌ¾'."\n".'define("BBS_TITLE","'.$bbs_title.'");'."\n\n";
-        $bbs_init.= '// BBS¤Î°ì¸ÀÀâÌÀÊ¸'."\n".'define("META_DESC","'.$meta_desc.'");'."\n\n";
-        $bbs_init.= '// BBS¤ÎÆÃÄ§¤È¤Ê¤ë¥­¡¼¥ï¡¼¥É¤ò¥«¥ó¥Ş¶èÀÚ¤ê¤ÇÆşÎÏ'."\n".'define("META_KEYWORD","'.$meta_keyword.'");'."\n\n";
-        $bbs_init.= '// // ¥Ù¡¼¥¹¤È¤Ê¤ëURL(ºÇ¸å¤Ï¥¹¥é¥Ã¥·¥å¤ÇÊÄ¤¸¤ë)'."\n".'define("BASE_URL","'.$author.'");'."\n\n";
-        $bbs_init.= '// ´ÉÍı¿Í¤ÎÌ¾Á°'."\n".'define("AUTHOR","'.$author.'");'."\n\n";
-        $bbs_init.= '// ¥¹¥­¥óÁªÂò'."\n".'define("SKIN_TYPE","'.$skin.'");'."\n\n";
-        $bbs_init.= '// Ì¾Á°Ì¤µ­Æş»ş¤ÎÌ¾Á°'."\n".'define("NO_NAME","'.$no_name.'");'."\n\n";
-        $bbs_init.= '// ¥¹¥ì¥Ã¥ÉÃ»½ÌÉ½¼¨¤ÎÉ½¼¨¥ì¥¹¿ô'."\n".'define("SHORT_RES_NUM",'.$short_rs.');'."\n\n";
-        $bbs_init.= '// 1¥Ú¡¼¥¸¤ËÉ½¼¨¤µ¤»¤ë¥¹¥ì¥Ã¥É¤Î¿ô'."\n".'define("THREAD_NUM_PER_PAGE",'.$thread_num_pp.');'."\n\n";
-        $bbs_init.= '// ´ÉÍı²èÌÌ¤Ø¤Î¥Ñ¥¹¥ï¡¼¥É'."\n".'define("ADMIN_PASSWORD","'.$admin_password.'");'."\n\n";
+        $bbs_init.= '// BBSã®ã‚¿ã‚¤ãƒˆãƒ«å'."\n".'define("BBS_TITLE","'.$bbs_title.'");'."\n\n";
+        $bbs_init.= '// BBSã®ä¸€è¨€èª¬æ˜æ–‡'."\n".'define("META_DESC","'.$meta_desc.'");'."\n\n";
+        $bbs_init.= '// BBSã®ç‰¹å¾´ã¨ãªã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§å…¥åŠ›'."\n".'define("META_KEYWORD","'.$meta_keyword.'");'."\n\n";
+        $bbs_init.= '// // ãƒ™ãƒ¼ã‚¹ã¨ãªã‚‹URL(æœ€å¾Œã¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã§é–‰ã˜ã‚‹)'."\n".'define("BASE_URL","'.$base_url.'");'."\n\n";
+        $bbs_init.= '// ç®¡ç†äººã®åå‰'."\n".'define("AUTHOR","'.$author.'");'."\n\n";
+        $bbs_init.= '// ã‚¹ã‚­ãƒ³é¸æŠ'."\n".'define("SKIN_TYPE","'.$skin.'");'."\n\n";
+        $bbs_init.= '// åå‰æœªè¨˜å…¥æ™‚ã®åå‰'."\n".'define("NO_NAME","'.$no_name.'");'."\n\n";
+        $bbs_init.= '// ã‚¹ãƒ¬ãƒƒãƒ‰çŸ­ç¸®è¡¨ç¤ºã®è¡¨ç¤ºãƒ¬ã‚¹æ•°'."\n".'define("SHORT_RES_NUM",'.$short_rs.');'."\n\n";
+        $bbs_init.= '// 1ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã•ã›ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°'."\n".'define("THREAD_NUM_PER_PAGE",'.$thread_num_pp.');'."\n\n";
+        $bbs_init.= '// ç®¡ç†ç”»é¢ã¸ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰'."\n".'define("ADMIN_PASSWORD","'.$admin_password.'");'."\n\n";
         $bbs_init.= '?>';
 
-        // ¥Õ¥¡¥¤¥ë¤Ë½ñ¤­¹ş¤à
-        $fp = fopen(INIT_BBS_SETTING,"w");
+        // ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚€
+        $fp = @fopen(INIT_BBS_SETTING,"w");
+        if (!$fp) {
+            // ãƒ•ã‚¡ã‚¤ãƒ«ç”Ÿæˆã«å¤±æ•—ã—ãŸã‚‰çµ‚äº†
+            $path_target = reset( pathinfo( dirname(__FILE__) ) );
+            $comment_error  = INIT_BBS_SETTING.MESSAGE_NOT_MAKE."<br />";
+            $comment_error .= "ã€Œ".$path_target."ã€".MESSAGE_CHANGE_PERMISSION_0777;
+            $this->errorEnd($comment_error);
+        }
         flock($fp, LOCK_EX);
         fwrite($fp, $bbs_init);
         flock($fp, LOCK_UN);
@@ -143,10 +167,10 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ¥Ø¥Ã¥ÀºîÀ®
+    // ãƒ˜ãƒƒãƒ€ä½œæˆ
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : $tmp : ¥Ø¥Ã¥À¤ÎÃæ¿È¤Î¥½¡¼¥¹
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : $tmp : ãƒ˜ãƒƒãƒ€ã®ä¸­èº«ã®ã‚½ãƒ¼ã‚¹
     //////////////////////////////////////////////////////////////
     protected function setHeader() {
         $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_HEADER);
@@ -154,10 +178,10 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ¥Õ¥Ã¥¿ºîÀ®
+    // ãƒ•ãƒƒã‚¿ä½œæˆ
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : $tmp : ¥Õ¥Ã¥¿¤ÎÃæ¿È¤Î¥½¡¼¥¹
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : $tmp : ãƒ•ãƒƒã‚¿ã®ä¸­èº«ã®ã‚½ãƒ¼ã‚¹
     //////////////////////////////////////////////////////////////
     protected function setFooter() {
         $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_FOOTER);
@@ -165,32 +189,32 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ¥Ü¥Ç¥£ºîÀ®
+    // ãƒœãƒ‡ã‚£ä½œæˆ
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : $tmp : ËÜÊ¸¤Î¥½¡¼¥¹
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : $tmp : æœ¬æ–‡ã®ã‚½ãƒ¼ã‚¹
     //////////////////////////////////////////////////////////////
     protected function setBody() {
 
-        // ½é´ü²½
+        // åˆæœŸåŒ–
         $main_body = "";
 
-        // ¥â¡¼¥É¤Ë¤è¤Ã¤Æ½èÍı¤òÊ¬¤±¤ë
+        // ãƒ¢ãƒ¼ãƒ‰ã«ã‚ˆã£ã¦å‡¦ç†ã‚’åˆ†ã‘ã‚‹
         switch( $this->mode ) {
-            // ÄÌ¾ï¤ÎÉ½¼¨ ////////////////////////////////////////
+            // é€šå¸¸ã®è¡¨ç¤º ////////////////////////////////////////
             case "view":
-                // ½ñ¤­¹ş¤ß¥Õ¥©¡¼¥à
+                // æ›¸ãè¾¼ã¿ãƒ•ã‚©ãƒ¼ãƒ 
                 $main_body .= file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_WRITE_BOX);
 
-            // ¥¹¥ì¥Ã¥É¤ÎÉ½¼¨ ////////////////////////////////////
+            // ã‚¹ãƒ¬ãƒƒãƒ‰ã®è¡¨ç¤º ////////////////////////////////////
             case "view_thread":
 
-                // ½çÈÖ¥í¥°¤ò¼èÆÀ
+                // é †ç•ªãƒ­ã‚°ã‚’å–å¾—
                 $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
                 $obj_turn = new TURN($turn_name);
 
-                if ( !$obj_turn->getExist() ) {
-                    // ½çÈÖ¥í¥°¤¬Ìµ¤¤¾ì¹ç
+                if ( !$obj_turn->getExist() || $obj_turn->getSize() == 0 ) {
+                    // é †ç•ªãƒ­ã‚°ãŒç„¡ã„å ´åˆ
                     $main_body .= file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_NO_WRITE);
                     $error_tmp = MESSAGE_ZERO_WRITE;
                     $main_body = str_replace("<!###NO_WRITE###!>",$error_tmp,$main_body);
@@ -199,17 +223,17 @@ class BBS {
                 }
                 else {
 
-                    // view¥â¡¼¥É¤ÇÉ¬Í×¤Ê½èÍı
+                    // viewãƒ¢ãƒ¼ãƒ‰ã§å¿…è¦ãªå‡¦ç†
                     if ( $this->mode == "view" ) {
 
-                        // ¥¹¥ì¥Ã¥É°ìÍ÷¤ò¼èÆÀ¤¹¤ë
+                        // ã‚¹ãƒ¬ãƒƒãƒ‰ä¸€è¦§ã‚’å–å¾—ã™ã‚‹
                         $loop_cnt = $obj_turn->getSize();
                         if ( $loop_cnt > NUM_THREAD_LIST ) {
                             $loop_cnt = NUM_THREAD_LIST;
                         }
                         $thread_list = "";
                         for($i=0;$i<$loop_cnt;$i++) {
-                            // ¥¹¥ì¥Ã¥É¤Î¿ô¤À¤±¥ë¡¼¥×¤·¤Æ¥ê¥ó¥¯¤òºîÀ®¤¹¤ë
+                            // ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã ã‘ãƒ«ãƒ¼ãƒ—ã—ã¦ãƒªãƒ³ã‚¯ã‚’ä½œæˆã™ã‚‹
                             $board_no = $obj_turn->getValue($i);
                             $log_name = DIR_LOG."/".PREFIX.trim($obj_turn->getValue($i)).".".EXT_LOG;
                             $obj_log = new LOG($log_name);
@@ -217,14 +241,14 @@ class BBS {
                             $thread_list .= "<a href=\"".$inner_url."\" class=\"thread_list_link\">".$obj_log->getTitle()."(".$obj_log->getSize().")</a>";
                         }
 
-                        // ¥¹¥ì¥Ã¥É°ìÍ÷¤òÄÉ²Ã
+                        // ã‚¹ãƒ¬ãƒƒãƒ‰ä¸€è¦§ã‚’è¿½åŠ 
                         $tmp_thread_list = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_THREAD_LIST);
                         $tmp_thread_list = str_replace("<!###THREAD_LIST###!>", $thread_list, $tmp_thread_list);
                         $main_body .= $tmp_thread_list;
 
-                        // ¥ë¡¼¥×¤Ë»ÈÍÑ¤¹¤ëÃÍ¤òÀßÄê¤¹¤ë
-                        //   ¥Ú¡¼¥¸¤Ï{1,2,3,4....}¤È1¤«¤é¿ô¤¨¤ë¤Î¤ËÂĞ¤·¤Æ
-                        //   ¤½¤ÎÂ¾¤Î¥Ç¡¼¥¿¤Ï{0,1,2,3....}¤È0¤«¤é¿ô¤¨¤ë¤Î¤Ç¤³¤³¤ÇÄ´À°
+                        // ãƒ«ãƒ¼ãƒ—ã«ä½¿ç”¨ã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹
+                        //   ãƒšãƒ¼ã‚¸ã¯{1,2,3,4....}ã¨1ã‹ã‚‰æ•°ãˆã‚‹ã®ã«å¯¾ã—ã¦
+                        //   ãã®ä»–ã®ãƒ‡ãƒ¼ã‚¿ã¯{0,1,2,3....}ã¨0ã‹ã‚‰æ•°ãˆã‚‹ã®ã§ã“ã“ã§èª¿æ•´
                         if ( $this->page == 1 ) {
                             $start_i = 0;
                             $loop_cnt = $obj_turn->getLoopLimit( 0,THREAD_NUM_PER_PAGE );
@@ -235,19 +259,19 @@ class BBS {
                     }
                     else if ( $this->mode == "view_thread" ) {
 
-                        // ¥ë¡¼¥×¤Ë»ÈÍÑ¤¹¤ëÃÍ¤òÀßÄê¤¹¤ë
-                        // view_thread¤Ç¤ÏÉ½¼¨¤¹¤ë¥¹¥ì¥Ã¥É¤Ï1¤Ä¤À¤±¤Ê¤Î¤Ç¡¢
-                        // ¥ë¡¼¥×¤Ï1²ó¤ÇºÑ¤à¤è¤¦¤ËÀßÄê
+                        // ãƒ«ãƒ¼ãƒ—ã«ä½¿ç”¨ã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹
+                        // view_threadã§ã¯è¡¨ç¤ºã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã¯1ã¤ã ã‘ãªã®ã§ã€
+                        // ãƒ«ãƒ¼ãƒ—ã¯1å›ã§æ¸ˆã‚€ã‚ˆã†ã«è¨­å®š
                         $start_i = $this->thread;
                         $loop_cnt = $start_i+1;
                     }
 
 
-                    // Í×Ìó¤¹¤ë¤È,
-                    // $obj_turn->data[$start_i] ¡Á [$loop_cnt] ¤Ş¤Ç¤ò¥ë¡¼¥×¤·¤Æ¤¤¤ë
+                    // è¦ç´„ã™ã‚‹ã¨,
+                    // $obj_turn->data[$start_i] ï½ [$loop_cnt] ã¾ã§ã‚’ãƒ«ãƒ¼ãƒ—ã—ã¦ã„ã‚‹
                     for($i = $start_i; $i < $loop_cnt && $i < 100; $i++ ) {
 
-                        // ½ñ¤­¹ş¤ß¥í¥°¤Î¥Ñ¥¹
+                        // æ›¸ãè¾¼ã¿ãƒ­ã‚°ã®ãƒ‘ã‚¹
                         if ( $this->mode == "view") {
                             $tmp_log_no = trim($obj_turn->getValue($i));
                         }
@@ -260,62 +284,65 @@ class BBS {
 
                         if ( $obj_log->getExist() ) {
                             
-                            // ½ñ¤­¹ş¤ß¥í¥°¼èÆÀ
+                            // æ›¸ãè¾¼ã¿ãƒ­ã‚°å–å¾—
                             $log_data = $obj_log->getData();
                             $log_cnt = $obj_log->getSize();
 
-                            // ¤½¤Î¥¹¥ì¥Ã¥ÉÆâ¤Î½ñ¤­¹ş¤ß¥Ç¡¼¥¿¤ò¼èÆÀ
+                            // ãã®ã‚¹ãƒ¬ãƒƒãƒ‰å†…ã®æ›¸ãè¾¼ã¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
                             $res_all = "";
 
-                            // ¥¹¥ì¥Ã¥ÉNo
+                            // ã‚¹ãƒ¬ãƒƒãƒ‰No
                             $board_no = $obj_log->getThreadNo();
 
-                            // ºÇ½é¤Î1¥ì¥¹
+                            // æœ€åˆã®1ãƒ¬ã‚¹
                             $res_unit = $obj_log->getRes(0);
                             $board_title = $res_unit["title"];
 
                             $tmp_board = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BOARD);
 
                             if ( $this->mode == "view" ) {
-                                // Ã»½ÌÉ½¼¨»ş¤Î¿ô¤ò¸µ¤ËÉ½¼¨³«»Ï¥ì¥¹ÈÖ¹æ¤òÀßÄê
+                                // çŸ­ç¸®è¡¨ç¤ºæ™‚ã®æ•°ã‚’å…ƒã«è¡¨ç¤ºé–‹å§‹ãƒ¬ã‚¹ç•ªå·ã‚’è¨­å®š
                                 $k_start = $log_cnt - SHORT_RES_NUM;
 
-                                // $k_start¤ÎÈÏ°Ï¥Á¥§¥Ã¥¯¡¢Ã»½ÌÉ½¼¨¤Î¥Õ¥é¥°¤â¤Ä¤±¤ë
+                                // $k_startã®ç¯„å›²ãƒã‚§ãƒƒã‚¯ã€çŸ­ç¸®è¡¨ç¤ºã®ãƒ•ãƒ©ã‚°ã‚‚ã¤ã‘ã‚‹
                                 if ( $k_start <= 0 ) { $k_start = 1; $k_flag = false; } else { $k_flag = true; }
                             }
                             else if ( $this->mode == "view_thread" ) {
-                                // view_thead¤Ç¤Ï¥¹¥ì¥Ã¥É¤òºÇ½é¤«¤éºÇ¸å¤Ş¤ÇÉ½¼¨
+                                // view_theadã§ã¯ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’æœ€åˆã‹ã‚‰æœ€å¾Œã¾ã§è¡¨ç¤º
                                 $k_start = 1;
                                 $k_flag = false;
+                                
+                                // ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«è¨­å®š
+                                $this->pagetitle = $board_title;
                             }
 
-                            // É½¼¨¤¹¤ë¥ì¥¹¤Î¿ô¤À¤±ÄÉ²Ã
-                            // ¥ë¡¼¥×²ó¿ô¤Ï (¥ì¥¹ÈÖ¹æ[1]¤ÎÊ¬ + ºÇ¸å¤«¤é¿ô¤¨¤ÆSHORT_RES_NUM¤Î¿ô¤ÎÊ¬)
+                            // è¡¨ç¤ºã™ã‚‹ãƒ¬ã‚¹ã®æ•°ã ã‘è¿½åŠ 
+                            // ãƒ«ãƒ¼ãƒ—å›æ•°ã¯ (ãƒ¬ã‚¹ç•ªå·[1]ã®åˆ† + æœ€å¾Œã‹ã‚‰æ•°ãˆã¦SHORT_RES_NUMã®æ•°ã®åˆ†)
                             for($k = $k_start; $k <= $log_cnt; $k++ ) {
                                 
-                                // ½é²ó¤Î¥ì¥¹ÈÖ¹æ¤ÏÉ¬¤º1¤È¤¹¤ë
+                                // åˆå›ã®ãƒ¬ã‚¹ç•ªå·ã¯å¿…ãš1ã¨ã™ã‚‹
                                 $show_res = ( $k == $k_start ) ? 1 : $k;
                                 
                                 if ( $res_unit['show'] == 1 ) {
-	                                // ¥ì¥¹¤ÎÃÖ´¹
-	                                $tmp_res = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_RES);
-	                                $tmp_res = str_replace("<!###BOARD_RES_NO###!>", sprintf("%03d",$show_res), $tmp_res);
-	                                $tmp_res = str_replace("<!###BOARD_NAME###!>",   $res_unit['name'],         $tmp_res);
-	                                $tmp_res = str_replace("<!###BOARD_DATE###!>",   $res_unit['date'],         $tmp_res);
-	                                $tmp_res = str_replace("<!###BOARD_ID###!>",     $res_unit['id'],           $tmp_res);
-	                                $tmp_res = str_replace("<!###BOARD_BODY###!>",   $res_unit['body'],         $tmp_res);
-	                            }
-	                            else {
-	                            	$tmp_res = NULL;
-	                            }
+                                    // ãƒ¬ã‚¹ã®ç½®æ›
+                                    $tmp_res = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_RES);
+                                    $tmp_res = str_replace("<!###BOARD_RES_NO###!>", sprintf("%03d",$show_res), $tmp_res);
+                                    $tmp_res = str_replace("<!###BOARD_NAME###!>",   $res_unit['name'],         $tmp_res);
+                                    $tmp_res = str_replace("<!###BOARD_DATE###!>",   $res_unit['date'],         $tmp_res);
+                                    $tmp_res = str_replace("<!###BOARD_ID###!>",     $res_unit['id'],           $tmp_res);
+                                    $tmp_res = str_replace("<!###BOARD_BODY###!>",   $res_unit['body'],         $tmp_res);
+                                }
+                                else {
+                                    $tmp_res = NULL;
+                                }
 
-                                // ¼¡¤Î¥ì¥¹¤ò¼èÆÀ
+                                // æ¬¡ã®ãƒ¬ã‚¹ã‚’å–å¾—
                                 $res_unit = $obj_log->getRes($k);
 
-                                // ÄÉ²Ã
+                                // è¿½åŠ 
                                 $res_all .= $tmp_res;
 
-                                // Ã»½ÌÉ½¼¨¤¬¤¢¤ê¡¢³î¤Ä½é²ó¤Î¥ì¥¹¤Ê¤éÏÈÀş¤òÉ½¼¨
+                                // çŸ­ç¸®è¡¨ç¤ºãŒã‚ã‚Šã€ä¸”ã¤åˆå›ã®ãƒ¬ã‚¹ãªã‚‰æ ç·šã‚’è¡¨ç¤º
                                 if ( $k_flag == true && $k == $k_start ) {
                                     $tmp_shortcut = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_SHORTCUT);
                                     $res_all .= $tmp_shortcut;
@@ -323,20 +350,20 @@ class BBS {
 
                             }
 
-                            // ÈÄ¤È¥ì¥¹¤Î¥Ç¡¼¥¿¤ò·ë¹ç
+                            // æ¿ã¨ãƒ¬ã‚¹ã®ãƒ‡ãƒ¼ã‚¿ã‚’çµåˆ
                             $tmp_board = str_replace("<!###BOARD_RES###!>", $res_all, $tmp_board);
 
-                            // ¥ì¥¹ÍÑ¥Ö¥í¥Ã¥¯
+                            // ãƒ¬ã‚¹ç”¨ãƒ–ãƒ­ãƒƒã‚¯
                             $tmp_resbox = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_WRITE_RES);
                             $tmp_board  = str_replace("<!###WRITE_RES###!>", $tmp_resbox, $tmp_board);
 
-                            // ¥¹¥ì¥Ã¥É¥ê¥ó¥¯ÍÑ¥Ö¥í¥Ã¥¯
+                            // ã‚¹ãƒ¬ãƒƒãƒ‰ãƒªãƒ³ã‚¯ç”¨ãƒ–ãƒ­ãƒƒã‚¯
                             $inner_url = BASE_URL . "?mode=view_thread&thread=" . $board_no;
                             $tmp_link   = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_LINK);
                             $tmp_link   = str_replace("<!###THREAD_INNER_LINK###!>", $inner_url, $tmp_link);
                             $tmp_board  = str_replace("<!###BOARD_LINK###!>", $tmp_link, $tmp_board);
 
-                            // ¥¹¥ì¥Ã¥É¥¿¥¤¥È¥ë¡¦No¤ÎÃÖ´¹
+                            // ã‚¹ãƒ¬ãƒƒãƒ‰ã‚¿ã‚¤ãƒˆãƒ«ãƒ»Noã®ç½®æ›
                             $tmp_board = str_replace("<!###BOARD_TITLE###!>", $board_title, $tmp_board);
                             $tmp_board = str_replace("<!###BOARD_NO###!>",    $board_no,    $tmp_board);
 
@@ -346,95 +373,96 @@ class BBS {
                     }
                     
                     if ( $this->mode == "view" ) {
-                        // Á´¥Ú¡¼¥¸¿ô¤ò»»½Ğ
+                        // å…¨ãƒšãƒ¼ã‚¸æ•°ã‚’ç®—å‡º
                         $all_page = floor($obj_turn->getSize() / THREAD_NUM_PER_PAGE);
                         if ( ( $obj_turn->getSize() % THREAD_NUM_PER_PAGE ) > 0 ) { $all_page++; }
-                        // ¥Ú¡¼¥¸¥¹¥¤¥Ã¥ÁÍÑHTML¤òÀ¸À®
+                        // ãƒšãƒ¼ã‚¸ã‚¹ã‚¤ãƒƒãƒç”¨HTMLã‚’ç”Ÿæˆ
                         $page_switch = $this->makePageSwitchLink($this->page,$all_page);
 
-                        // ¥Ú¡¼¥¸¥¹¥¤¥Ã¥Á¤òÃÖ´¹
+                        // ãƒšãƒ¼ã‚¸ã‚¹ã‚¤ãƒƒãƒã‚’ç½®æ›
                         $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_PAGE_SWITCH);
                         $tmp = str_replace("<!###PAGE_SWITCH_LINK###!>", $page_switch, $tmp);
                         $main_body .= $tmp;
                     }
 
-                    // ËÜÊ¸¤ÎÁ´ÂÎÉôÊ¬¤òÆÉ¤ß¹ş¤ó¤ÇÃÖ´¹
+                    // æœ¬æ–‡ã®å…¨ä½“éƒ¨åˆ†ã‚’èª­ã¿è¾¼ã‚“ã§ç½®æ›
                     $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                     $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
                 }
                 break;
 
-            // ¥¹¥ì¥Ã¥É½ñ¤­¹ş¤ß³ÎÇ§ //////////////////////////////
+            // ã‚¹ãƒ¬ãƒƒãƒ‰æ›¸ãè¾¼ã¿ç¢ºèª //////////////////////////////
             case "new_thread_conf":
                 $main_body = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_THREAD_CONF);
 
-                // ²¼½àÈ÷
+                // ä¸‹æº–å‚™
                 $p_body = htmlspecialchars($_POST["body"]);
-                if ( $_POST["name"] != "" ) { $p_name = $_POST["name"]; } else { $p_name = NO_NAME; }
+                if ( $_POST["name"] != "" ) { $p_name = htmlspecialchars($_POST["name"]); } else { $p_name = NO_NAME; }
+                $p_title = htmlspecialchars($_POST["title"]);
 
-                // ÃÖ´¹
+                // ç½®æ›
                 $main_body = str_replace("<!###THREAD_NAME###!>",      $p_name,         $main_body);
-                $main_body = str_replace("<!###THREAD_TITLE###!>",     $_POST["title"], $main_body);
+                $main_body = str_replace("<!###THREAD_TITLE###!>",     $p_title,        $main_body);
                 $main_body = str_replace("<!###THREAD_BODY###!>",      $p_body,         $main_body);
                 $main_body = str_replace("<!###THREAD_SHOW_BODY###!>", nl2br($p_body),  $main_body);
 
-                // ËÜÊ¸¤ÎÁ´ÂÎÉôÊ¬¤òÆÉ¤ß¹ş¤ó¤ÇÃÖ´¹
+                // æœ¬æ–‡ã®å…¨ä½“éƒ¨åˆ†ã‚’èª­ã¿è¾¼ã‚“ã§ç½®æ›
                 $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                 $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
                 break;
 
-            // ¥ì¥¹½ñ¤­¹ş¤ß³ÎÇ§ //////////////////////////////////
+            // ãƒ¬ã‚¹æ›¸ãè¾¼ã¿ç¢ºèª //////////////////////////////////
             case "new_res_conf":
                 $main_body = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_RES_CONF);
 
-                // ²¼½àÈ÷
+                // ä¸‹æº–å‚™
                 $p_body = htmlspecialchars($_POST["res_body"]);
-                if ( $_POST["res_name"] != "" ) { $p_name = $_POST["res_name"]; } else { $p_name = NO_NAME; }
+                if ( $_POST["res_name"] != "" ) { $p_name = htmlspecialchars($_POST["res_name"]); } else { $p_name = NO_NAME; }
 
-                // ÃÖ´¹
+                // ç½®æ›
                 $main_body = str_replace("<!###THREAD_TITLE###!>",  $_POST["thread_title"], $main_body);
                 $main_body = str_replace("<!###THREAD_NO###!>",     $_POST["thread_no"],    $main_body);
                 $main_body = str_replace("<!###RES_NAME###!>",      $p_name,                $main_body);
                 $main_body = str_replace("<!###RES_BODY###!>",      $p_body,                $main_body);
                 $main_body = str_replace("<!###RES_SHOW_BODY###!>", nl2br($p_body),         $main_body);
 
-                // ËÜÊ¸¤ÎÁ´ÂÎÉôÊ¬¤òÆÉ¤ß¹ş¤ó¤ÇÃÖ´¹
+                // æœ¬æ–‡ã®å…¨ä½“éƒ¨åˆ†ã‚’èª­ã¿è¾¼ã‚“ã§ç½®æ›
                 $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                 $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
 
                 break;
 
-            // ¥¹¥ì¥Ã¥É¡¦¥ì¥¹½ñ¤­¹ş¤ß¼Â¹Ô ////////////////////////
+            // ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ»ãƒ¬ã‚¹æ›¸ãè¾¼ã¿å®Ÿè¡Œ ////////////////////////
             case "new_thread_write":
             case "new_res_write":
-                // this->preProcess()¤Î»şÅÀ¤Ç¥ê¥À¥¤¥ì¥¯¥È¤¬¤«¤«¤Ã¤Æ¤¤¤ë¤Î¤Ç¡¢
-                // ¤³¤³¤Ë¤ÏÍè¤Ê¤¤¡£
+                // this->preProcess()ã®æ™‚ç‚¹ã§ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãŒã‹ã‹ã£ã¦ã„ã‚‹ã®ã§ã€
+                // ã“ã“ã«ã¯æ¥ãªã„ã€‚
                 break;
 
-            // ´ÉÍı²èÌÌ¤ÎÉ½¼¨ ////////////////////////////////////
+            // ç®¡ç†ç”»é¢ã®è¡¨ç¤º ////////////////////////////////////
             case "login":
-                // ´ÉÍı²èÌÌ¤ÎÉ½¼¨
+                // ç®¡ç†ç”»é¢ã®è¡¨ç¤º
                 $main_body = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_ADMIN);
-                $comment_table  = "´ÉÍı²èÌÌ¤Ç¤¹¡£<br />\n<form action='' method='post' enctype='application/x-www-form-urlencoded'>\n";
+                $comment_table  = MESSAGE_ADMIN_LOGINED."<br />\n<form action='' method='post' enctype='application/x-www-form-urlencoded'>\n";
                 $comment_table .= "<input type='hidden' name='pass' value='".$_POST["pass"]."' />";
-                $comment_table .= "<input type='submit' name='submit' class='admin_submit' value='Á÷¿®¤¹¤ë' /> <input type='reset' name='reset' class='admin_submit'  value='¥ê¥»¥Ã¥È' />";
+                $comment_table .= "<input type='submit' name='submit' class='admin_submit' value='".WORD_ADMIN_SEND."' /> <input type='reset' name='reset' class='admin_submit'  value='".WORD_ADMIN_RESET."' />";
 
-                // ½ñ¤­¹ş¤ß¥Ç¡¼¥¿¤ò¼èÆÀ
-                // ½çÈÖ¥í¥°¤ò¼èÆÀ
+                // æ›¸ãè¾¼ã¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+                // é †ç•ªãƒ­ã‚°ã‚’å–å¾—
                 $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
                 $obj_turn = new TURN($turn_name);
 
-                if ( !$obj_turn->getExist() ) {
-                    // ½çÈÖ¥í¥°¤¬Ìµ¤¤¾ì¹ç
-                    $comment_table = MESSAGE_ZERO_WRITE;
+                if ( !$obj_turn->getExist() || $obj_turn->getSize() == 0 ) {
+                    // é †ç•ªãƒ­ã‚°ãŒç„¡ã„å ´åˆ
+                    $comment_table = MESSAGE_ADMIN_LOGINED."<br />".MESSAGE_ZERO_WRITE;
                 }
                 else {
                     
-                    // ¥¹¥ì¥Ã¥É°ìÍ÷¤ò¼èÆÀ¤¹¤ë
+                    // ã‚¹ãƒ¬ãƒƒãƒ‰ä¸€è¦§ã‚’å–å¾—ã™ã‚‹
                     $loop_cnt = $obj_turn->getSize();
                     $start_i = 0;
 
-                    // Á´¥¹¥ì¥Ã¥É¤Î¿ô¤À¤±¥ë¡¼¥×¤¹¤ë
+                    // å…¨ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã ã‘ãƒ«ãƒ¼ãƒ—ã™ã‚‹
                     for($i = $start_i; $i < $loop_cnt && $i < 100; $i++ ) {
 
                         $tmp_log_no = trim($obj_turn->getValue($i));
@@ -442,29 +470,29 @@ class BBS {
                         $obj_log = new LOG($log_name);
 
                         if ( $obj_log->getExist() ) {
-                            // ºÇ½é¤Î1¥ì¥¹
+                            // æœ€åˆã®1ãƒ¬ã‚¹
                             $res_unit = $obj_log->getRes(0);
                             $board_title = $res_unit["title"];
 
-                            // ¥ì¥¹¤Î¿ô¤ò¼èÆÀ
+                            // ãƒ¬ã‚¹ã®æ•°ã‚’å–å¾—
                             $log_cnt = $obj_log->getSize();
                             $k_start = 1;
 
                             $comment_table .= "<table class='admin_thread_tbl'>"."\n";
                             $comment_table .= "\t"  ."<tr>"."\n";
-                            $comment_table .= "\t\t"."<td colspan='6'>¡Ú".$board_title ."¡Û</td>"."\n";
+                            $comment_table .= "\t\t"."<td colspan='6'>ã€".$board_title ."ã€‘</td>"."\n";
                             $comment_table .= "\t"  ."</tr>"."\n";
 
                             $comment_table .= "\t"  ."<tr>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>No</td>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>¥³¥á¥ó¥È</td>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>Ì¾Á°</td>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>IP</td>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' class='admin_date admin_menu_bg'>½ñ¤­¹ş¤ß»ş´Ö</td>"."\n";
-                            $comment_table .= "\t\t"."<td align='center' valign='middle' class='admin_delete_check admin_menu_bg'>ºï½ü</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>".WORD_ADMIN_TABLE_NO."</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>".WORD_ADMIN_TABLE_COMMENT."</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>".WORD_ADMIN_TABLE_NAME."</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' class='admin_menu_bg'>".WORD_ADMIN_TABLE_IP."</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' class='admin_date admin_menu_bg'>".WORD_ADMIN_TABLE_DATE."</td>"."\n";
+                            $comment_table .= "\t\t"."<td align='center' valign='middle' class='admin_delete_check admin_menu_bg'>".WORD_ADMIN_TABLE_DELETE."</td>"."\n";
                             $comment_table .= "\t"  ."</tr>"."\n";
 
-							$row_cnt = 1;
+                            $row_cnt = 1;
                             for($k = $k_start; $k <= $log_cnt; $k++ ) {
                                 
                                 if ( $row_cnt%2 == 0 ) {
@@ -474,18 +502,18 @@ class BBS {
                                 }
                                 
                                 if ( $res_unit['show'] == 1 ) {
-	                                $comment_table .= "\t"  ."<tr>"."\n";
-	                                $comment_table .= "\t\t"."<td class='admin_no ".$add_css."'>" . $res_unit['no'] . "</td>"."\n";
-	                                $comment_table .= "\t\t"."<td class='".$add_css."'>" . $res_unit['body'] . "</td>"."\n";
-	                                $comment_table .= "\t\t"."<td class='admin_name ".$add_css."'>".$res_unit['name']."</td>"."\n";
-	                                $comment_table .= "\t\t"."<td class='admin_name ".$add_css."'>".$res_unit['ip']."</td>"."\n";
-	                                $comment_table .= "\t\t"."<td class='admin_date ".$add_css."'>".$res_unit['date']."</td>"."\n";
-	                                $comment_table .= "\t\t"."<td valign='middle' class='admin_delete_check ".$add_css."'><input type='checkbox' name='delete_box[".$tmp_log_no."][".$res_unit["no"]."]' value='on' /></td>"."\n";
-	                                $comment_table .= "\t"  ."</tr>"."\n";
-	                                $row_cnt++;
+                                    $comment_table .= "\t"  ."<tr>"."\n";
+                                    $comment_table .= "\t\t"."<td class='admin_no ".$add_css."'>" . $res_unit['no'] . "</td>"."\n";
+                                    $comment_table .= "\t\t"."<td class='".$add_css."'>" . $res_unit['body'] . "</td>"."\n";
+                                    $comment_table .= "\t\t"."<td class='admin_name ".$add_css."'>".$res_unit['name']."</td>"."\n";
+                                    $comment_table .= "\t\t"."<td class='admin_name ".$add_css."'>".$res_unit['ip']."</td>"."\n";
+                                    $comment_table .= "\t\t"."<td class='admin_date ".$add_css."'>".$res_unit['date']."</td>"."\n";
+                                    $comment_table .= "\t\t"."<td valign='middle' class='admin_delete_check ".$add_css."'><input type='checkbox' name='delete_box[".$tmp_log_no."][".$res_unit["no"]."]' value='on' /></td>"."\n";
+                                    $comment_table .= "\t"  ."</tr>"."\n";
+                                    $row_cnt++;
                                 }
 
-                                // ¼¡¤Î¥ì¥¹¤ò¼èÆÀ
+                                // æ¬¡ã®ãƒ¬ã‚¹ã‚’å–å¾—
                                 $res_unit = $obj_log->getRes($k);
                             }
                             
@@ -500,72 +528,97 @@ class BBS {
 
                 $main_body = str_replace("<!###COMMENT_TABLE###!>",$comment_table,$main_body);
 
-                // ÃÖ´¹
+                // ç½®æ›
                 $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                 $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
+
+				// ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«(ç®¡ç†ç”»é¢ç”¨)
+                $this->pagetitle = WORD_ADMIN_TITLE;
                 break;
 
-            // ´ÉÍı²èÌÌ¤«¤é¤Îºï½ü ////////////////////////////////////
+            // ç®¡ç†ç”»é¢ã‹ã‚‰ã®å‰Šé™¤ ////////////////////////////////////
             case "admin_cmd":
                 $main_body .= file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_ADMIN);
 
-				if ( !empty($_POST["delete_box"]) ) {
+                if ( !empty($_POST["delete_box"]) ) {
 
-	                $main_body  .= "¹¹¿·¤·¤Ş¤·¤¿¡£<br />\n";
+                    $main_body  .= MESSAGE_ADMIN_RELOAD_DONE."<br />\n";
 
-					// ÆşÎÏ¤µ¤ì¤¿ºï½üÈÖ¹æ¤ò½çÈÖ¤Ë¸«¤ë
-					$deletes = $_POST["delete_box"];
-					foreach($deletes as $key => $arr) {
-	                    $board_no = $key;
-	                    
-                    	// ¥¹¥ì¥Ã¥É¤ÎºÇ½é¤Î½ñ¤­¹ş¤ß¤¬ºï½ü¤µ¤ì¤ë¾ì¹ç¤Ï¥¹¥ì¥Ã¥É¤´¤Èºï½ü
-	                    if ( $board_no == 1 ) {
+                    // å…¥åŠ›ã•ã‚ŒãŸå‰Šé™¤ç•ªå·ã‚’é †ç•ªã«è¦‹ã‚‹
+                    $deletes = $_POST["delete_box"];
+                    foreach($deletes as $key => $arr) {
+                        $board_no = $key;
 
-			                // ½çÈÖ¥í¥°¤ò¼èÆÀ
-			                $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
-			                $obj_turn = new TURN($turn_name);
-			                
-	                    }
-						// ¤½¤ì°Ê³°¤ÏÉáÄÌ¤Ë½ñ¤­¹ş¤ß¤òºï½ü
-	                    else {
-		                    $log_name = DIR_LOG."/".PREFIX.trim($board_no).".".EXT_LOG;
-		                    $obj_log = new LOG($log_name);
+                        $log_name = DIR_LOG."/".PREFIX.trim($board_no).".".EXT_LOG;
+                        $obj_log = new LOG($log_name);
 
-							foreach($arr as $index => $val ) {
-								if( $val == "on" ) {
-									$res = $obj_log->getRes($index-1);
-									// show¥Õ¥é¥°¤ò1¤«¤é0¤Ë¡£
-									$res["show"] = 0;
-									// ÊÑ¹¹¤òÈ¿±Ç
-									$obj_log->editRes($res,$index-1);
-								}
-							}
+                        foreach($arr as $index => $val ) {
+                            // "on"ãªã‚‰å‰Šé™¤å¯¾è±¡ã®ãƒ‡ãƒ¼ã‚¿ã¨ã¿ãªã™
+                            if( $val == "on" ) {
 
-							// ÊİÂ¸
-							$obj_log->write();
-							unset($obj_log);
-						}
+                                // ã‚¹ãƒ¬ãƒƒãƒ‰ã®å…ˆé ­ã‚’å‰Šé™¤ã™ã‚‹å ´åˆã¯ã‚¹ãƒ¬ãƒƒãƒ‰ã”ã¨å‰Šé™¤
+                                if ( $index == 1 ) {
+                                    // é †ç•ªãƒ­ã‚°ã‚’å–å¾—
+                                    $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
+                                    $obj_turn = new TURN($turn_name);
 
-					}
-				}
-				else {
-	                $main_body  .= "ºï½ü¤Ë¥Á¥§¥Ã¥¯¤¬£±¤Ä¤â¤Ä¤¤¤Æ¤¤¤Ş¤»¤ó¡£<br />\n";
-				}
+                                    // ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹
+                                    $loop_cnt = $obj_turn->getSize();
 
-				// ¡ÖÌá¤ë¡×¥Ü¥¿¥óÉ½¼¨
+                                    // ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã ã‘ãƒ«ãƒ¼ãƒ—
+                                    for($th_cnt=0;$th_cnt<$loop_cnt;$th_cnt++) {
+                                        $turn_no = $obj_turn->getValue($th_cnt);
+
+                                        // ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã¨å¿…ãšãƒ«ãƒ¼ãƒ—ã®çµ‚ç›¤ã«NULL
+                                        // ãŒæ¥ã‚‹ã®ã§ã“ã“ã§ãƒã‚§ãƒƒã‚¯ã‚’ã‹ã‘ã‚‹
+                                        if ( $turn_no != NULL ) {
+                                            // è©²å½“ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰NoãŒè¦‹ã¤ã‹ã‚Œã°
+                                            if ( $board_no == $turn_no ) {
+                                                // ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å‰Šé™¤
+                                                $obj_turn->deleteData($turn_no);
+                                                $obj_turn->writeData();
+                                            }
+                                        }
+                                    }
+                                }
+                                // å…ˆé ­ä»¥å¤–ãªã‚‰è©²å½“ã®æ›¸ãè¾¼ã¿ã ã‘å‰Šé™¤
+                                else {
+                                    $res = $obj_log->getRes($index-1);
+                                    // showãƒ•ãƒ©ã‚°ã‚’1ã‹ã‚‰0ã«ã€‚
+                                    $res["show"] = 0;
+                                    // å¤‰æ›´ã‚’åæ˜ 
+                                    $obj_log->editRes($res,$index-1);
+                                }
+                            }
+                        }
+
+                        // ä¿å­˜
+                        $obj_log->write();
+                        unset($obj_log);
+
+                    }
+                }
+                else {
+                    $main_body  .= MESSAGE_ADMIN_NO_CHECK."<br />\n";
+                }
+
+                // ã€Œæˆ»ã‚‹ã€ãƒœã‚¿ãƒ³è¡¨ç¤º
                 $main_body .= "<form action=\"\" method=\"post\" enctype=\"application/x-www-form-urlencoded\" style=\"margin-top:5px;\">";
                 $main_body .= "<input type=\"hidden\" name=\"mode\" value=\"login\" />";
-                $main_body .= "<input type=\"hidden\" name=\"pass\" value=\"".$_POST["pass"]."\" ><input type=\"submit\" name=\"submit\" value=\"´ÉÍı²èÌÌ¤ØÌá¤ë\" /></form>";
+                $main_body .= "<input type=\"hidden\" name=\"pass\" value=\"".$_POST["pass"]."\" ><input type=\"submit\" name=\"submit\" value=\"ç®¡ç†ç”»é¢ã¸æˆ»ã‚‹\" /></form>";
 
-                // ÃÖ´¹
+                // ç½®æ›
                 $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                 $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
-            	break;
-            // ¥¨¥é¡¼É½¼¨ ////////////////////////////////////////
+
+				// ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«(ç®¡ç†ç”»é¢ç”¨)
+                $this->pagetitle = WORD_ADMIN_TITLE;
+                break;
+            // ã‚¨ãƒ©ãƒ¼è¡¨ç¤º ////////////////////////////////////////
             case "error":
             default:
                 $main_body .= file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_ERROR);
-                // ¥¨¥é¡¼
+                // ã‚¨ãƒ©ãƒ¼
                 if ( $this->error != NULL ) {
                     $error_tmp = $this->error;
                 } else {
@@ -573,7 +626,7 @@ class BBS {
                 }
                 $main_body = str_replace("<!###ERROR_COMMENT###!>",$error_tmp,$main_body);
 
-                // ÃÖ´¹
+                // ç½®æ›
                 $tmp = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_BODY);
                 $tmp = str_replace("<!###MAIN_BODY###!>", $main_body, $tmp);
                 break;
@@ -583,28 +636,29 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ÀßÄê¹àÌÜ¤Î¥Æ¥­¥¹¥ÈÅù¤òÃÖ´¹¤¹¤ë
-    // ob_start()¤Î¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¤È¤·¤Æ¸Æ¤Ó½Ğ¤¹
+    // è¨­å®šé …ç›®ã®ãƒ†ã‚­ã‚¹ãƒˆç­‰ã‚’ç½®æ›ã™ã‚‹
+    // ob_start()ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ã¨ã—ã¦å‘¼ã³å‡ºã™
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : $output : ½ĞÎÏ¥Ğ¥Ã¥Õ¥¡¤ÎÃæ¿È
-    // Ìá¤êÃÍ : $output : ºÇ½ªÅª¤Ë½ĞÎÏ¤¹¤ëhtml¥½¡¼¥¹
+    // å¼•æ•°   : $output : å‡ºåŠ›ãƒãƒƒãƒ•ã‚¡ã®ä¸­èº«
+    // æˆ»ã‚Šå€¤ : $output : æœ€çµ‚çš„ã«å‡ºåŠ›ã™ã‚‹htmlã‚½ãƒ¼ã‚¹
     //////////////////////////////////////////////////////////////
     protected function convertSettingTextAndArea($output) {
         $rep = "st"."r_";
-        // ÃÖ´¹
-        $output = str_replace('<!###TITLE###!>',            BBS_TITLE,     $output);
-        $output = str_replace('<!###AUTHOR###!>',           AUTHOR,        $output);
-        $output = str_replace('<!###META_KEYWORD###!>',     META_KEYWORD,  $output);
-        $output = str_replace('<!###META_DESC###!>',        META_DESC,     $output);
-        $output = str_replace('<!###BASE_URL###!>',         BASE_URL,      $output);
-        $output = str_replace('<!###CHECK_COOKIE###!>',     $this->cookie, $output);
-        $output = str_replace('<!###SKIN_TYPE###!>',        SKIN_TYPE,     $output);
+        // ç½®æ›
+        $output = str_replace('<!###TITLE###!>',        BBS_TITLE,      $output);
+        $output = str_replace('<!###PAGE_TITLE###!>',   $this->titleAdjust($this->pagetitle).BBS_TITLE, $output);
+        $output = str_replace('<!###AUTHOR###!>',       AUTHOR,         $output);
+        $output = str_replace('<!###META_KEYWORD###!>', META_KEYWORD,   $output);
+        $output = str_replace('<!###META_DESC###!>',    META_DESC,      $output);
+        $output = str_replace('<!###BASE_URL###!>',     BASE_URL,       $output);
+        $output = str_replace('<!###CHECK_COOKIE###!>', $this->cookie,  $output);
+        $output = str_replace('<!###SKIN_TYPE###!>',    SKIN_TYPE,      $output);
 
-        // ¥í¥°¥¤¥ó¥¨¥ê¥¢¤ÎÉ½¼¨
+        // ãƒ­ã‚°ã‚¤ãƒ³ã‚¨ãƒªã‚¢ã®è¡¨ç¤º
         $tmp    = $this->returnLoginArea($_POST["pass"]);
         $output = str_replace("<!###LOGIN###!>", $tmp, $output);
 
-        // ¤½¤ÎÂ¾
+        // ãã®ä»–
         $rep .= "re"."pl"."ac"."e";
         $output = $rep('</b'.'od'.'y>','<d'.'iv id="co'.'pyr'.'igh'.
                        't">P'.'owe' . 're'.'d B'.'y <a h'.'re'.'f="ht'.
@@ -616,10 +670,10 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ÉÁ²è½èÍı(¢¨¤³¤³¤Ç¤ÏÆâÉô¥Ğ¥Ã¥Õ¥¡¤Ë½ĞÎÏ¤¹¤ë¤Î¤ß)
+    // æç”»å‡¦ç†(â€»ã“ã“ã§ã¯å†…éƒ¨ãƒãƒƒãƒ•ã‚¡ã«å‡ºåŠ›ã™ã‚‹ã®ã¿)
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     protected function view() {
         echo $this->head;
@@ -628,27 +682,27 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // $_REQUEST¤«¤é¥â¡¼¥É¤ò³ÎÇ§¤·¤Æ¤½¤ÎÃÍ¤òÊÖ¤¹
-    // ½ñ¤­¹ş¤ß·Ï¤Î½èÍı¤Ê¤é$_REQUEST["mode"]¤ò¥Á¥§¥Ã¥¯¤¹¤ì¤ĞOK
-    // ¤¿¤À¤·É½¼¨¤À¤Ã¤¿¤éÂ¾¤Î$_REQUEST[***]¤ÎÃÍ¤â¥Á¥§¥Ã¥¯¤¹¤ëÉ¬Í×¤¬
-    // ¸å¡¹½Ğ¤Æ¤¯¤ë¤È¤¤¤¦Á°Äó¤Ç½èÍı¤ò¹Ô¤¦
+    // $_REQUESTã‹ã‚‰ãƒ¢ãƒ¼ãƒ‰ã‚’ç¢ºèªã—ã¦ãã®å€¤ã‚’è¿”ã™
+    // æ›¸ãè¾¼ã¿ç³»ã®å‡¦ç†ãªã‚‰$_REQUEST["mode"]ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚Œã°OK
+    // ãŸã ã—è¡¨ç¤ºã ã£ãŸã‚‰ä»–ã®$_REQUEST[***]ã®å€¤ã‚‚ãƒã‚§ãƒƒã‚¯ã™ã‚‹å¿…è¦ãŒ
+    // å¾Œã€…å‡ºã¦ãã‚‹ã¨ã„ã†å‰æã§å‡¦ç†ã‚’è¡Œã†
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : $mode : ¥â¡¼¥É¤ÎÃÍ
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : $mode : ãƒ¢ãƒ¼ãƒ‰ã®å€¤
     //////////////////////////////////////////////////////////////
     protected function getMode() {
-        // ¥â¡¼¥É¼èÆÀ
+        // ãƒ¢ãƒ¼ãƒ‰å–å¾—
         $mode = ( isset($_REQUEST["mode"]) ) ? $_REQUEST["mode"] : "view";
         
-        // view¤Ê¤é
+        // viewãªã‚‰
         if ( $mode == "view" ) {
-            // ¥Ú¡¼¥¸¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤¦(¥Ç¥Õ¥©¥ë¥È¤Ï1)
+            // ãƒšãƒ¼ã‚¸ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯1)
             $this->page = (isset( $_REQUEST["page"])) ? $_REQUEST["page"] : 1;
         }
 
-        // view_thread¤Ê¤é
+        // view_threadãªã‚‰
         if ( $mode == "view_thread" ) {
-            // ¥¹¥ì¥Ã¥ÉÃ±ÂÎ¤Îview¤«¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤¦
+            // ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½“ã®viewã‹ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†
             $this->thread = (isset( $_REQUEST["thread"])) ? $_REQUEST["thread"] : NULL;
         }
 
@@ -656,71 +710,71 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // $mode¤ÎÃÍ¤ò¸«¤Æ»öÁ°¤Ë¹Ô¤¦½èÍı¤¬¤¢¤ì¤Ğ¤³¤³¤Ç¹Ô¤¦
-    // ¥ê¥À¥¤¥ì¥¯¥È¤Ê¤ó¤«¤â»È¤¦¾ì¹ç¤¢¤ê
+    // $modeã®å€¤ã‚’è¦‹ã¦äº‹å‰ã«è¡Œã†å‡¦ç†ãŒã‚ã‚Œã°ã“ã“ã§è¡Œã†
+    // ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãªã‚“ã‹ã‚‚ä½¿ã†å ´åˆã‚ã‚Š
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : Ìµ¤·
-    // Ìá¤êÃÍ : Ìµ¤·
+    // å¼•æ•°   : ç„¡ã—
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
     //////////////////////////////////////////////////////////////
     protected function preProcess() {
 
         switch( $this->mode ) {
             case "view":
-                // ½ñ¤­¹ş¤ßÍÑ¤Ë¥¯¥Ã¥­¡¼¤òÊİÂ¸¤¹¤ë
+                // æ›¸ãè¾¼ã¿ç”¨ã«ã‚¯ãƒƒã‚­ãƒ¼ã‚’ä¿å­˜ã™ã‚‹
                 $this->cookie = sprintf("%04d",rand(0,9999));
                 setcookie("rami_check_cookie",$this->cookie);
                 break;
             case "view_thread":
-                // ½ñ¤­¹ş¤ßÍÑ¤Ë¥¯¥Ã¥­¡¼¤òÊİÂ¸¤¹¤ë
+                // æ›¸ãè¾¼ã¿ç”¨ã«ã‚¯ãƒƒã‚­ãƒ¼ã‚’ä¿å­˜ã™ã‚‹
                 $this->cookie = sprintf("%04d",rand(0,9999));
                 setcookie("rami_check_cookie",$this->cookie);
-                // threadÈÖ¹æ¤ÎÃæ¿È¤¬³ÊÇ¼¤µ¤ì¤Æ¤¤¤ë¤Î¤ò³ÎÇ§¤¹¤ë
+                // threadç•ªå·ã®ä¸­èº«ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã®ã‚’ç¢ºèªã™ã‚‹
                 if ( $this->thread == NULL ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_THREAD_NUMBER."<br />";
                 }
-                // threadÈÖ¹æ¤ÎÃæ¿È¤¬¿ô»ú¤«¤É¤¦¤«
+                // threadç•ªå·ã®ä¸­èº«ãŒæ•°å­—ã‹ã©ã†ã‹
                 else if ( !ereg("[0-9]+",$this->thread) ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_WRONG_THREAD_NUMBER."<br />";
                 }
                 break;
             case "new_thread_conf":
-                // ¥Ö¥é¥¦¥¶¤Î¥¯¥Ã¥­¡¼¤ÎÃÍ¤ÈPOST¤ÎÃÍ¤¬°ìÃ×¤¹¤ë¤«¤ò¥Á¥§¥Ã¥¯¤¹¤ë
+                // ãƒ–ãƒ©ã‚¦ã‚¶ã®ã‚¯ãƒƒã‚­ãƒ¼ã®å€¤ã¨POSTã®å€¤ãŒä¸€è‡´ã™ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
                 $tmpCookie = $_REQUEST["check"];
                 if ( $tmpCookie != $_COOKIE["rami_check_cookie"] ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_COOKIE_ERROR."<br />";
                 }
-                // ¥¿¥¤¥È¥ë¤Î¥Á¥§¥Ã¥¯
+                // ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒã‚§ãƒƒã‚¯
                 if ( !isset($_POST["title"]) || $_POST["title"] == "" ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_THREAD_TITLE."<br />";
                 }
-                // ËÜÊ¸¤Î¥Á¥§¥Ã¥¯
+                // æœ¬æ–‡ã®ãƒã‚§ãƒƒã‚¯
                 if ( !isset($_POST["body"]) || $_POST["body"] == "" ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_THREAD_BODY."<br />";
                 }
                 break;
             case "new_thread_write":
-                // ¥í¥°¥Õ¥©¥ë¥À¤Î¥Á¥§¥Ã¥¯
+                // ãƒ­ã‚°ãƒ•ã‚©ãƒ«ãƒ€ã®ãƒã‚§ãƒƒã‚¯
                 if ( !file_exists(DIR_LOG) ) {
-                    // ¥Õ¥©¥ë¥ÀºîÀ®
+                    // ãƒ•ã‚©ãƒ«ãƒ€ä½œæˆ
                     mkdir(DIR_LOG);
                     chmod(DIR_LOG,0777);
                 }
 
-                // ½çÈÖ¥í¥°¤òÆÉ¤ß¹ş¤à
+                // é †ç•ªãƒ­ã‚°ã‚’èª­ã¿è¾¼ã‚€
                 $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
                 $obj_turn = new TURN($turn_name);
 
-                // ½çÈÖ¥í¥°¤ò½ñ¤­¹ş¤ß
+                // é †ç•ªãƒ­ã‚°ã‚’æ›¸ãè¾¼ã¿
                 $obj_turn->addData();
                 $obj_turn->writeData();
 
-                // ½ñ¤­¹ş¤ß¥í¥°ÆÉ¤ß¹ş¤ß
-                $log_name = DIR_LOG."/".PREFIX.$obj_turn->getSize().".".EXT_LOG;
+                // æ›¸ãè¾¼ã¿ãƒ­ã‚°èª­ã¿è¾¼ã¿
+                $log_name = DIR_LOG."/".PREFIX.$obj_turn->getMaxValue().".".EXT_LOG;
 
                 $log_data = 0;
                 $log_data = array(0);
@@ -728,17 +782,17 @@ class BBS {
 
                 // No
                 $res_cnt = 1;
-                // ¥¿¥¤¥È¥ë
-                $res_title = $_POST["title"];
-                // Ì¾Á°
-                $res_name = ( $_POST["name"] != "" ) ? $_POST["name"] : NO_NAME;
-                // ËÜÊ¸
+                // ã‚¿ã‚¤ãƒˆãƒ«
+                $res_title = htmlspecialchars($_POST["title"]);
+                // åå‰
+                $res_name = ( $_POST["name"] != "" ) ? htmlspecialchars($_POST["name"]) : NO_NAME;
+                // æœ¬æ–‡
                 $res_body = htmlspecialchars($_POST["body"]);
                 $res_body = str_replace("\r\n","<br />",$res_body);
                 $res_body = str_replace("\n","<br />",$res_body);
                 // IP
                 $res_ip = $_SERVER["REMOTE_ADDR"];
-                // ¥Û¥¹¥È
+                // ãƒ›ã‚¹ãƒˆ
                 if ( isset($_SERVER["REMOTE_HOST"]) ) {
                     $res_host = $_SERVER["REMOTE_HOST"];
                 } else {
@@ -746,33 +800,33 @@ class BBS {
                 }
                 // ID
                 $res_id = substr(crypt($res_ip,date("d")),2,10);
-                // ÆüÉÕ¤±
+                // æ—¥ä»˜ã‘
                 $res_date = date("Y-m-d H:i:s");
 
-                // ½ñ¤­¹ş¤ß¥Ç¡¼¥¿
+                // æ›¸ãè¾¼ã¿ãƒ‡ãƒ¼ã‚¿
                 $log_data[1]  = $res_cnt.MARK.$res_title.MARK.$res_name.MARK.$res_body.MARK.$res_date.MARK.$res_host.MARK.$res_id.MARK.FLAG_VISIBLE;
 
                 $fp = fopen($log_name,"w");
                 flock($fp,LOCK_EX);
-                // ¥¹¥ì¥Ã¥ÉNo¤ò³ÊÇ¼
+                // ã‚¹ãƒ¬ãƒƒãƒ‰Noã‚’æ ¼ç´
                 fwrite($fp,$log_data[0]."\r\n");
                 fwrite($fp,$log_data[1]);
                 flock($fp, LOCK_UN);
                 fclose($fp);
                 chmod($log_name,0777);
 
-                // ¥ê¥À¥¤¥ì¥¯¥È
+                // ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆ
                 header("Location: ./");
                 break;
 
             case "new_res_conf":
-                // ¥Ö¥é¥¦¥¶¤Î¥¯¥Ã¥­¡¼¤ÎÃÍ¤ÈPOST¤ÎÃÍ¤¬°ìÃ×¤¹¤ë¤«¤ò¥Á¥§¥Ã¥¯¤¹¤ë
+                // ãƒ–ãƒ©ã‚¦ã‚¶ã®ã‚¯ãƒƒã‚­ãƒ¼ã®å€¤ã¨POSTã®å€¤ãŒä¸€è‡´ã™ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
                 $tmpCookie = $_REQUEST["check"];
                 if ( $tmpCookie != $_COOKIE["rami_check_cookie"] ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_COOKIE_ERROR."<br />";
                 }
-                // ËÜÊ¸¤Î¥Á¥§¥Ã¥¯
+                // æœ¬æ–‡ã®ãƒã‚§ãƒƒã‚¯
                 if ( !isset($_POST["res_body"]) || $_POST["res_body"] == "" ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_RES_BODY."<br />";
@@ -780,39 +834,39 @@ class BBS {
                 break;
 
             case "new_res_write":
-                // ½ñ¤­¹ş¤ß¥í¥°ÆÉ¤ß¹ş¤ß
+                // æ›¸ãè¾¼ã¿ãƒ­ã‚°èª­ã¿è¾¼ã¿
                 $log_name = DIR_LOG."/".PREFIX.$_POST["thread_no"].".".EXT_LOG;
                 $obj_log = new LOG($log_name);
 
                 if ( $obj_log->getExist() ) {
                     $log_data = file($log_name);
                 } else {
-                    // ¥Õ¥¡¥¤¥ë¤¬Ìµ¤±¤ì¤Ğ¥¨¥é¡¼
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ãŒç„¡ã‘ã‚Œã°ã‚¨ãƒ©ãƒ¼
                     $this->mode = "error";
                     $this->error .= MESSAGE_FAILURE_LOG_GET."<br />";
                     break;
                 }
 
-                // ½ñ¤­¹ş¤ßÄÉ²Ã
+                // æ›¸ãè¾¼ã¿è¿½åŠ 
                 $obj_log->addRes($_POST["res_name"],$_POST["res_body"]);
-                // ½ñ¤­¹ş¤ß¥í¥°ÊİÂ¸
+                // æ›¸ãè¾¼ã¿ãƒ­ã‚°ä¿å­˜
                 $obj_log->write();
 
-                // ½çÈÖ¥í¥°½ñ¤­´¹¤¨
+                // é †ç•ªãƒ­ã‚°æ›¸ãæ›ãˆ
                 $turn_name = DIR_LOG."/".FN_TURN.".".EXT_LOG;
                 $obj_turn = new TURN($turn_name);
                 $obj_turn->upSelectedTurn($_POST["thread_no"]);
                 $obj_turn->writeData();
 
-                // ¥ê¥À¥¤¥ì¥¯¥È
+                // ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆ
                 header("Location: ./");
                 break;
 
             case "login":
-                // ´ÉÍı²èÌÌ¥í¥°¥¤¥ó
+                // ç®¡ç†ç”»é¢ãƒ­ã‚°ã‚¤ãƒ³
 
-                // ¥Ñ¥¹¥ï¡¼¥É³ÎÇ§
-                // ´Ö°ã¤Ã¤Æ¤¤¤ì¤Ğ¥¨¥é¡¼¤ò½Ğ¤¹
+                // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ç¢ºèª
+                // é–“é•ã£ã¦ã„ã‚Œã°ã‚¨ãƒ©ãƒ¼ã‚’å‡ºã™
                 if ( !isset($_POST["pass"]) || $_POST["pass"] == "" ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_ADMIN_PASS."<br />";
@@ -824,10 +878,10 @@ class BBS {
                 break;
 
             case "admin_cmd":
-                // ´ÉÍı²èÌÌ¤Î¥³¥Ş¥ó¥É½èÍı
+                // ç®¡ç†ç”»é¢ã®ã‚³ãƒãƒ³ãƒ‰å‡¦ç†
 
-                // ¥Ñ¥¹¥ï¡¼¥É³ÎÇ§
-                // ´Ö°ã¤Ã¤Æ¤¤¤ì¤Ğ¥¨¥é¡¼¤ò½Ğ¤¹
+                // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ç¢ºèª
+                // é–“é•ã£ã¦ã„ã‚Œã°ã‚¨ãƒ©ãƒ¼ã‚’å‡ºã™
                 if ( !isset($_POST["pass"]) || $_POST["pass"] == "" ) {
                     $this->mode = "error";
                     $this->error .= MESSAGE_EMPTY_ADMIN_PASS."<br />";
@@ -846,11 +900,11 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ¥Ú¡¼¥¸¥¹¥¤¥Ã¥ÁÍÑ¤Î¥ê¥ó¥¯HTML¤òºîÀ®
+    // ãƒšãƒ¼ã‚¸ã‚¹ã‚¤ãƒƒãƒç”¨ã®ãƒªãƒ³ã‚¯HTMLã‚’ä½œæˆ
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : $now      : ¸½ºß¤Î¥Ú¡¼¥¸¿ô
-    // °ú¿ô   : $all_page : Á´¥Ú¡¼¥¸¿ô
-    // Ìá¤êÃÍ : $html     : ¥ê¥ó¥¯HTML
+    // å¼•æ•°   : $now      : ç¾åœ¨ã®ãƒšãƒ¼ã‚¸æ•°
+    // å¼•æ•°   : $all_page : å…¨ãƒšãƒ¼ã‚¸æ•°
+    // æˆ»ã‚Šå€¤ : $html     : ãƒªãƒ³ã‚¯HTML
     //////////////////////////////////////////////////////////////
     protected function makePageSwitchLink($now,$all_page) {
 
@@ -858,10 +912,10 @@ class BBS {
 
         for($p=1;$p<=$all_page;$p++) {
             if ( $p == $now ) {
-                // ¸½ºß¤Î¥Ú¡¼¥¸¤Ë¤Ï¶¯Ä´É½¼¨
+                // ç¾åœ¨ã®ãƒšãƒ¼ã‚¸ã«ã¯å¼·èª¿è¡¨ç¤º
                 $html .= "<b>[".$p."]</b>";
             } else {
-                // ¤½¤ÎÂ¾¤Î¥Ú¡¼¥¸¤Ë¤Ï¥ê¥ó¥¯¤òÅ½¤ë
+                // ãã®ä»–ã®ãƒšãƒ¼ã‚¸ã«ã¯ãƒªãƒ³ã‚¯ã‚’è²¼ã‚‹
                 if ( $p == 1 ) {
                     $html .= "<a href=\"./\">[".$p."]</a>";
                 } else {
@@ -878,21 +932,45 @@ class BBS {
     }
 
     //////////////////////////////////////////////////////////////
-    // ¥í¥°¥¤¥ó¥¨¥ê¥¢¤ÎÉ½¼¨ÆâÍÆ¤òÊÖ¤¹
+    // ãƒ­ã‚°ã‚¤ãƒ³ã‚¨ãƒªã‚¢ã®è¡¨ç¤ºå†…å®¹ã‚’è¿”ã™
     //////////////////////////////////////////////////////////////
-    // °ú¿ô   : $pass : ´ÉÍı²èÌÌ¤Î¥Ñ¥¹¥ï¡¼¥É
-    // Ìá¤êÃÍ : $ret  : ¥í¥°¥¤¥ó¥¨¥ê¥¢¤ÎÉ½¼¨ÆâÍÆ
+    // å¼•æ•°   : $pass : ç®¡ç†ç”»é¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+    // æˆ»ã‚Šå€¤ : $ret  : ãƒ­ã‚°ã‚¤ãƒ³ã‚¨ãƒªã‚¢ã®è¡¨ç¤ºå†…å®¹
     //////////////////////////////////////////////////////////////
     protected function returnLoginArea($pass = NULL) {
 
-        // ¥Ñ¥¹¥ï¡¼¥É¤ÎÀµÈİ¤Ë¤è¤Ã¤ÆÉ½¼¨ÆâÍÆ¤òÊÑ¤¨¤ë
+        // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®æ­£å¦ã«ã‚ˆã£ã¦è¡¨ç¤ºå†…å®¹ã‚’å¤‰ãˆã‚‹
         if ( $pass == ADMIN_PASSWORD ) {
             $ret = "<div id='admin_jump'><a href='?logout'>".WORD_LOGOUT."</a></div><br clear='both' />";
         } else {
-            // ¥Ñ¥¹¥ï¡¼¥É¤¬´Ö°ã¤Ã¤Æ¤¤¤ì¤Ğ
+            // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé–“é•ã£ã¦ã„ã‚Œã°
             $ret = file_get_contents(DIR_SKIN."/".SKIN_TYPE."/".INC_LOGIN);
         }
         return $ret;
+    }
+
+    //////////////////////////////////////////////////////////////
+    // ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«ãŒæœ‰ã‚‹å ´åˆã¨ç„¡ã„å ´åˆã®å¯¾å‡¦ã‚’è¡Œã†
+    // å¼•æ•°ãŒç©ºãªã‚‰ãã®ã¾ã¾ã€ç©ºã§ãªã‘ã‚Œã°å¾Œã‚ã«ç©ºç™½ã‚’å…¥ã‚Œã‚‹ã ã‘
+    //////////////////////////////////////////////////////////////
+    // å¼•æ•°   : $title : ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«
+    // æˆ»ã‚Šå€¤ : $title : ãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒˆãƒ«
+    //////////////////////////////////////////////////////////////
+    protected function titleAdjust($title = NULL) {
+        return ($title!="") ? $title." " : "";
+    }
+
+    //////////////////////////////////////////////////////////////
+    // ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¦çµ‚äº†
+    //////////////////////////////////////////////////////////////
+    // å¼•æ•°   : $comment_error : ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¡ãƒ³ãƒˆ
+    // æˆ»ã‚Šå€¤ : ç„¡ã—
+    //////////////////////////////////////////////////////////////
+    protected function errorEnd($comment_error = NULL) {
+        echo "<html><head></head><body align='center'>";
+        echo $comment_error;
+        echo "</body></html>";
+        die();
     }
 
 }

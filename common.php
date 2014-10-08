@@ -1,8 +1,8 @@
 <?php
-require_once("class/DEF_BASE.php");    // ŠeŽí’è‹`
-require_once("class/DEF_MESSAGE.php"); // ƒVƒXƒeƒ€ƒƒbƒZ[ƒW’è‹`
-require_once("class/CLASS_BBS.php");   // BBSƒNƒ‰ƒX(ŒfŽ¦”Â‚Æ‚µ‚Ä‚ÌŠî–{ˆ—ƒNƒ‰ƒX)
-require_once("class/CLASS_TURN.php");  // TURNƒNƒ‰ƒX(ƒXƒŒƒbƒh‚Ì•\Ž¦‡‚ðŠÇ—ƒNƒ‰ƒX)
-require_once("class/CLASS_LOG.php");   // LOGƒNƒ‰ƒX(‘‚«ž‚Ü‚ê‚½ƒf[ƒ^‚ðŠÇ—ƒNƒ‰ƒX)
-require_once("class/CLASS_RAMI.php");  // RAMI_BBSƒNƒ‰ƒX(BBSƒNƒ‰ƒX‚ÌŠg’£ƒNƒ‰ƒX)
+require_once("class/DEF_BASE.php");    // å„ç¨®å®šç¾©
+require_once("class/DEF_MESSAGE.php"); // ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©
+require_once("class/CLASS_BBS.php");   // BBSã‚¯ãƒ©ã‚¹(æŽ²ç¤ºæ¿ã¨ã—ã¦ã®åŸºæœ¬å‡¦ç†)
+require_once("class/CLASS_TURN.php");  // TURNã‚¯ãƒ©ã‚¹(ã‚¹ãƒ¬ãƒƒãƒ‰ã®è¡¨ç¤ºé †ã‚’ç®¡ç†)
+require_once("class/CLASS_LOG.php");   // LOGã‚¯ãƒ©ã‚¹(æ›¸ãè¾¼ã¾ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚’ç®¡ç†)
+require_once("class/CLASS_RAMI.php");  // RAMI_BBSã‚¯ãƒ©ã‚¹(BBSã‚¯ãƒ©ã‚¹ã®æ‹¡å¼µ)
 ?>

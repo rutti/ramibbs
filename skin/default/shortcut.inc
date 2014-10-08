@@ -1,1 +1,1 @@
-	<div class="shortcut">&nbsp;</div>
+        <div class="shortcut">&nbsp;</div>

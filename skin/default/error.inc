@@ -1,2 +1,2 @@
 <!###ERROR_COMMENT###!>
-<input type="button" value="Ìá¤ë"   onClick="history.back(); return false;" />
+<input type="button" value="æˆ»ã‚‹"   onClick="history.back(); return false;" />

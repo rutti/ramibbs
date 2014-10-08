@@ -1,15 +1,41 @@
 <?php
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 // ***************************************************************
-// ŠÈˆÕŒfŽ¦”Â Rami-BBS
+// ç°¡æ˜“æŽ²ç¤ºæ¿ Rami-BBS
 // ***************************************************************
-// New BSD ƒ‰ƒCƒZƒ“ƒX
-// •¶‘Œ^’è‹`‚ÍHTML 4.0
-// $_REQUEST‚ðŽg‚¤‚Ì‚ÅPHP‚Ìƒo[ƒWƒ‡ƒ“‚Í4.1ˆÈã‚ÅB
+// MIT ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
+// æ–‡æ›¸åž‹å®šç¾©ã¯HTML 4.0
+// $_REQUESTã‚’ä½¿ã†ã®ã§PHPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯4.1ä»¥ä¸Šã§ã€‚
+// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+//
+// Rami-BBS
+// The MIT License
+//
+// Copyright (c) 2012 http://rami.rutti.net/
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+//
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
-require_once("common.php");      // ŠeƒNƒ‰ƒXE’è‹`‚Ì“Ç‚Ýž‚Ý
-$obj_rami = new RAMI_BBS();      // ƒCƒ“ƒXƒ^ƒ“ƒX¶¬
-$obj_rami->start();              // ˆ—ŠJŽn
+require_once("common.php");      // å„ã‚¯ãƒ©ã‚¹ãƒ»å®šç¾©ã®èª­ã¿è¾¼ã¿
+$obj_rami = new RAMI_BBS();      // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
+$obj_rami->start();              // å‡¦ç†é–‹å§‹
 
 ?>
